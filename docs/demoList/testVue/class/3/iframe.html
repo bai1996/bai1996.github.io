@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<div v-show="seen">现在你看到我了</div>
+			<br>
+			<button  v-if="!seen" @click="show();">
+				【点击显示】
+			</button >
+			<button  v-if="seen" @click="hide();">
+				【点击隐藏】
+			</button >
+			<br>
+			普通循环
+			<br>
+			<ul>
+				<li v-for="item in list">{{item}}</li>
+			</ul>
+			带角标循环
+			<ol>
+				<li v-for="(item,i) in list">{{item}}-序号：{{i}}</li>
+			</ol>
+			用模板循环(template标签会在循环后去除)
+			<dl>
+			<template v-for="(item,i) in list">
+				<!-- <dt v-if="i%2 == 0">{{item}}</dt> -->
+				<!-- <dd v-if="i%2 == 1">{{item}}</dd> -->
+				<dt v-if="i%2 == 0">{{item}}</dt>
+				<dd v-else>{{item}}</dd>
+			</template>
+			</dl>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			data:{
+				seen:true,
+				list:["笔记本电脑","剪刀","雨伞","灭火器","鼠标","剃须刀","吹风机","地铁","耳机","台灯","电视机","冰箱","洗衣机","空调","卷发棒","筷子","水杯","口红"]
+			},
+			methods:{
+				show:function(){
+					this.$data.seen = true;
+				},
+				hide:function(){
+					this.$data.seen = false;
+				}
+			}
+		});
+	</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>动画效果</title>
+		<script src="jquery/jquery-1.9.1.min.js"></script>
+	</head>
+
+	<body>
+
+<!--		<button id="btn">按钮</button>
+		<div id="box" style="height: 100px;width: 300px;background-color: lightblue"></div>
+-->		<script>
+			//$('#btn').click(function(event) {
+				//$('#box').slideUp();//改变高度
+				//$('#box').slideDown();//展开（按高度）
+				//$('#box').slideToggle();//展开关闭开关方法
+				//$('#box').fadeIn();//淡入
+				//$('#box').fadeOut();//淡出
+				//$('#box').fadeToggle();//淡入淡出开关方法
+				//$("#box").stop();//停止当前动画
+				/*$('#box').toggle(1000, 'linear', function() {//加如回调(开关方法)
+					alert('动画完成');
+				*/
+				//});
+
+			//});
+		</script>
+
+
+
+<style>
+li{text-decoration: underline; margin-top: 2px;}
+</style>
+<ul id="con" style="display:inline-block;width:100px;cursor:pointer;margin:0;padding: 0;list-style:none;">
+    <li>fast</li>
+    <li>normal</li>
+    <li>slow</li>
+    <li>100</li>
+    <li>1000</li>
+</ul>
+<button id="reset">恢复</button>
+<div id="box" style="display:inline-block;height: 100px;width: 300px;background-color: lightblue"></div>
+<script>
+$('#reset').click(function(){
+    $('#box').css('opacity','1');
+})
+$('#con li').click(function(){
+    var value = $(this).html();//半透明
+    $('#box').fadeTo(isNaN(Number(value)) ? value:Number(value),0.5)
+})
+</script>
+
+
+
+
+
+
+<button id="btn1">按钮</button>
+<div id="box1" style="height: 100px;width: 300px;background-color: lightblue"></div>
+<script>
+$('#btn1').click(function(event){
+  $('#box1').fadeTo('fast',Math.random());//随机透明度
+});
+</script>
+
+
+
+
+
+	</body>
+
+</html>

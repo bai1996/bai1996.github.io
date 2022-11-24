@@ -1,0 +1,792 @@
+/* page reset css start */
+
+html {
+	color: #000;
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+html * {
+	outline: 0;
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+	/*基础样式*/
+body{
+	color: #D5D6E2;
+	font-weight: 500;
+	font-size: 1.05em;
+}
+body, html {
+	font-size: 100%;
+	padding: 0;
+	margin: 0;
+}
+/*maxBox*/
+.index{
+	
+}
+.p20 {
+	padding: 20px 0px !important;
+	box-sizing: border-box;
+}
+.p30 {
+	padding: 30px 0px !important;
+	box-sizing: border-box;
+}
+.p60 {
+	padding: 60px 0px !important;
+	box-sizing: border-box;
+}
+.pb10 {
+	padding-bottom: 10px;
+}
+.mt60 {
+	margin-top: 60px;
+}
+.mb20 {
+	margin-bottom: 20px !important;
+}
+fieldset, img {
+    border: 0;
+}
+
+/********************************************************************************************/
+/*滚动列表，手动*/
+.qn_list_page_switch_center {
+    width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#qn_list_page_switch_gallery {
+    height: 496px;
+    overflow: hidden;
+}
+.qn_list_page_switch_container1{
+    margin: 0 auto;
+    position: relative;
+    width: 1440;
+    font-size: .8125em;
+}
+.qn_list_page_switch_card_img {
+    width: 40%;
+    height: auto;
+    margin: 10px 5%;
+    border-bottom: 1px #555555 solid;
+    float: left;
+}
+.qn_list_page_switch_card_p {
+    width: 45%;
+    height: auto;
+    float: left;
+    margin-top: 3%;
+}
+.qn_list_page_switch_card_p1_span {
+    width: 20px;
+    height: 22px;
+    float: right;
+    margin-top: 5%;
+}
+.qn_list_page_switch_card_p1_span img {
+    width: 100%;
+}
+.qn_list_page_switch_card_p1 {
+    width: 100%;
+    border-bottom: 1px #029ded dashed;
+    line-height: 300%;
+    color: #555555;
+    font-size: 16px;
+    padding: 0 5%;
+    box-sizing: border-box;
+}
+.qn_list_page_switch_card_p2 {
+    width: 100%;
+    border-bottom: 1px #c4c4c4 dashed;
+    line-height: 200%;
+    color: #c4c4c4;
+    font-size: 14px;
+    padding: 0 5%;
+    box-sizing: border-box;
+}
+/*滚动列表，手动END*/
+/*覆写滚动插件样式*/
+.roundabout-holder {
+    width: 850px;
+    height: 496px;
+    margin: 0 auto;
+}
+.roundabout-moveable-item {
+    width: 646px;
+    height: 416px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border: 3px solid rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background: #fff;
+    overflow: hidden;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+.roundabout-in-focus {
+    border: 3px solid rgba(0, 0, 0, 0.2);
+}
+/*覆写滚动插件样式END*/
+/*横向列表*/
+.qn_list_transverse_bg{
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+	padding: 70px 0px;
+}
+.qn_list_transverse_position {
+	position: relative;
+}
+.qn_list_transverse_div {
+	width: 100%;
+	height: auto;
+}
+.qn_list_transverse_div_p {
+	width: 100%;
+	height: auto;
+	text-align: center;
+	line-height: 35px;
+	font-size: 26px;
+	position: absolute;
+	top: 150px;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+}
+/*横向列表END*/
+/*数字列表方块状*/
+.qn_list_number_block_bg{
+	width:1100px;
+}
+.qn_list_number_block_div {
+	width: 100%;
+	height: auto;
+	padding: 15px;
+	box-sizing: border-box;
+	position: relative;
+}
+.qn_list_number_block_nub {
+	width: 215px;
+	line-height: 270px;
+	text-align: center;
+	font-size: 100px;
+	position: absolute;
+	top: 0px;
+	color: rgb(0, 0, 0);
+}
+.qn_list_number_block_p {
+	width: 100%;
+	height: 60px;
+	font-size: 20px;
+	line-height: 30px;
+	color: rgb(0, 0, 0);
+	text-align: center;
+	overflow: hidden;
+}	
+.qn_list_number_block_div img {
+	width: 100%;
+	height: auto;
+}
+/*数字列表方块状END*/
+
+/********************************************************************************************/
+
+
+
+
+/*简单新闻查看*/
+.qn_concise_news_center {
+    width: 1200px;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+.qn_concise_news_xx_title {
+    font-size: 35px;
+    color: rgb(56, 56, 56);
+    line-height: 45px;
+    text-align: center;
+    font-family: 汉仪大隶书简;
+    padding: 35px 10px;
+    border-bottom: 1px dashed rgb(196, 194, 194);
+}
+.qn_concise_news_xx_date {
+    width: 95%;
+    height: 50px;
+    margin: 0 2.5%;
+    overflow: hidden;
+    line-height: 50px;
+    font-size: 16px;
+    color: #999999;
+}
+.qn_concise_news_xx_date_right{
+	float: right;
+}
+.qn_concise_news_xx_p {
+    width: 95%;
+    height: auto;
+    text-indent: 25px;
+    margin: 20px 2.5%;
+    color: #5d5c5c;
+    line-height: 30px;
+    font-size: 14px;
+}
+.qn_concise_news_xx_img {
+    width: 50%;
+    height: auto;
+    margin: 0 25%;
+}
+/*简单新闻查看END*/
+
+
+
+/*滚动*/
+
+
+
+#qn_page_switch, .sections {
+    position: relative;
+}
+#qn_page_switch {
+    /*height: 650px;*/
+    height: 40%;
+   overflow: hidden;
+}
+
+.sections .section {
+    background-color: #000;
+    background-size: cover;
+    background-position: 50% 50%;
+    text-align: center;
+    color: white;
+}
+.sections, .section {
+    height: 100%;
+}
+
+/*滚动*/
+
+
+
+
+
+/*列表方块状*/
+.qn_list_block_box_max{
+}
+/*标题*/
+.qn_list_block_box_max .title_box{
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+	border-bottom:2px dashed #000;
+	padding-bottom: 10px;
+	margin-bottom: 20px !important;
+}
+/*大标题*/
+.qn_list_block_box_max .title_box .title{
+	float: left;
+    line-height: 40px;
+    font-size: 40px;
+    color: #000000;
+    background-image: -webkit-linear-gradient(to left, #c81e0a, #000000);
+    background-image: linear-gradient(to left,#c81e0a,#000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto;
+}
+/*小标题*/
+.qn_list_block_box_max .title_box .title_small {
+    line-height: 30px;
+    font-size: 24px;
+    color: #000000;
+    text-align: right;
+	float: right;
+}
+/*小标题鼠标进入状态*/
+.qn_list_block_box_max .title_box .title_small:hover{
+	cursor:pointer;
+}
+.qn_list_block_box_max .body{
+	
+}
+.qn_list_block_box_max .body .column{
+	
+}
+/*区块鼠标进入状态*/
+.qn_list_block_box_max .body .column:hover{
+	cursor:pointer;
+}
+.qn_list_block_box_max .body .column .minbox{
+	
+}
+.qn_list_block_box_max .body .column .minbox .img{
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+.qn_list_block_box_max .body .column .title{
+	width: 100%;
+	height: 30px;
+	font-size: 28px;
+	line-height: 30px;
+	text-align: center;
+	color: rgb(0, 0, 0);
+	margin-top: 20px;
+}
+.qn_list_block_box_max .body .column .abstract {
+	width: 100%;
+	height: 30px;
+	font-size: 18px;
+	line-height: 30px;
+	text-align: center;
+	color: rgb(0, 0, 0);
+}
+/*列表方块状END*/
+
+
+
+
+/*包围式列表*/
+/*
+顶部 左侧大标题，右侧小标题
+接下来，左侧大图，右侧几个列表
+底下几个列表
+*/
+.qn_list_surround_box_max {
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+}
+/*标题*/
+.qn_list_surround_box_max .title_box{
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+	border-bottom:2px dashed #000;
+	padding: 20px 0px !important;
+}
+/*大标题*/
+.qn_list_surround_box_max .title_box .title{
+	float: left;
+    line-height: 40px;
+    font-size: 40px;
+    color: #000000;
+    background-image: -webkit-linear-gradient(to left, #c81e0a, #000000);
+    background-image: linear-gradient(to left,#c81e0a,#000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto;
+}
+/*小标题*/
+.qn_list_surround_box_max .title_box .title_small{
+    line-height: 30px;
+    font-size: 24px;
+    color: #000000;
+    float: right;
+}
+/*小标题鼠标进入状态*/
+.qn_list_surround_box_max .title_box .title_small:hover{
+	cursor:pointer;
+}
+/*内容div*/
+.qn_list_surround_box_max .body{
+}
+/*图文列表*/
+.qn_list_surround_box_max .body .list{
+	
+}
+/*左侧区域*/
+.qn_list_surround_box_max .body .list .column_left{
+}
+/*图片盒子*/
+.qn_list_surround_box_max .body .list .column_left .img_div{
+	width: 100%;
+	height: auto;
+    padding: 15px 0px;
+	position: relative;	
+}
+/*图片盒子鼠标进入状态*/
+.qn_list_surround_box_max .body .list .column_left .img_div:hover{
+	cursor:pointer;
+}
+/*图片样式*/
+.qn_list_surround_box_max .body .list .column_left .img_div .img{
+	width: 100%;
+	height: auto;
+	position: relative;	
+}
+/*右侧样式*/
+.qn_list_surround_box_max .body .list .column_right{
+	
+}
+/*文字盒子*/
+.qn_list_surround_box_max .body .list .column_right .href{
+	display: block;
+	width: 100%;
+	height: 130px;
+	border-bottom: 1px #d7d7d7 dashed;
+	padding: 15px 0px;
+	box-sizing: border-box;	
+}
+/*文字盒子鼠标进入状态*/
+.qn_list_surround_box_max .body .list .column_right .href:hover{
+	cursor:pointer;
+}
+/*方块时间盒子-右侧样式*/
+.qn_list_surround_box_max .body .list .column_right .href .date{
+	width: 85px;
+	height: 85px;
+	float: left;
+	background: #f2f2f2;
+	padding: 15px 0px;
+	box-sizing: border-box;
+}
+/*大字day-右侧样式*/
+.qn_list_surround_box_max .body .list .column_right .href .date .date_day{
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	font-size: 26px;
+	color: #4e4e4e;
+	text-align: center;
+}
+/*小字年/月-右侧样式*/
+.qn_list_surround_box_max .body .list .column_right .href .date .date_year_month{
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	color: #686868;
+	text-align: center;
+}
+/*文字包围-右侧样式*/
+.qn_list_surround_box_max .body .list .column_right .href .pdiv{
+	width: 80%;
+	height: 85px;
+	margin-left: 15px;
+	float: left;
+}
+/*文字包围标题-右侧样式*/
+.qn_list_surround_box_max .body .list .column_right .href .pdiv .title{
+	width: 100%;
+	height: 35px;
+	color: #686868;
+	font-size: 14px;
+	overflow: hidden;
+	line-height: 35px;
+}
+/*文字包围简介-右侧样式*/
+.qn_list_surround_box_max .body .list .column_right .href .pdiv .abstract{
+	width: 100%;
+	height: 50px;
+	color: #9a9999;
+	font-size: 12px;
+	overflow: hidden;
+	line-height: 25px;
+}
+/*底部列表*/
+.qn_list_surround_box_max .body .list .column_bottom{
+    float: right;
+}
+/*底部列表连接div*/
+.qn_list_surround_box_max .body .list .column_bottom .href{
+	display: block;
+	width: 100%;
+	height: 130px;
+	border-bottom: 1px #d7d7d7 dashed;
+	padding: 15px 0px;
+	box-sizing: border-box;	
+}
+/*底部列表链接DIV盒子鼠标进入状态*/
+.qn_list_surround_box_max .body .list .column_bottom .href:hover{
+	cursor:pointer;
+}
+/*方块时间盒子-底部列表*/
+.qn_list_surround_box_max .body .list .column_bottom  .href .date{
+	width: 85px;
+	height: 85px;
+	float: left;
+	background: #f2f2f2;
+	padding: 15px 0px;
+	box-sizing: border-box;
+}
+/*大字day-底部列表*/
+.qn_list_surround_box_max .body .list .column_bottom  .href .date .date_day{
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	font-size: 26px;
+	color: #4e4e4e;
+	text-align: center;
+}
+/*小字年/月-底部列表*/
+.qn_list_surround_box_max .body .list .column_bottom  .href .date .date_year_month{
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	color: #686868;
+	text-align: center;
+}
+/*文字包围-底部列表*/
+.qn_list_surround_box_max .body .list .column_bottom  .href .pdiv{
+	width: 80%;
+	height: 85px;
+	margin-left: 15px;
+	float: left;
+}
+/*文字包围标题-底部列表*/
+.qn_list_surround_box_max .body .list .column_bottom  .href .pdiv .title{
+	width: 100%;
+	height: 35px;
+	color: #686868;
+	font-size: 14px;
+	overflow: hidden;
+	line-height: 35px;
+}
+/*文字包围简介-底部列表*/
+.qn_list_surround_box_max .body .list .column_bottom  .href .pdiv .abstract{
+	width: 100%;
+	height: 50px;
+	color: #9a9999;
+	font-size: 12px;
+	overflow: hidden;
+	line-height: 25px;
+}
+/*包围式列表END*/
+
+
+
+/*简洁列表*/
+/*最大盒子*/
+.qn_list_concise_box_max {
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+}
+/*标题*/
+.qn_list_concise_box_max .title_box{
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+	border-bottom:2px dashed #000;
+	padding: 20px 0;
+}
+/*大标题*/
+.qn_list_concise_box_max .title_box .title{
+	float: left;
+    line-height: 40px;
+    font-size: 40px;
+    color: #000000;
+    background-image: -webkit-linear-gradient(to left, #c81e0a, #000000);
+    background-image: linear-gradient(to left,#c81e0a,#000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto;
+}
+/*小标题*/
+.qn_list_concise_box_max .title_box .title_small{
+    line-height: 30px;
+    font-size: 24px;
+    color: #000000;
+    float: right;
+}
+/*小标题鼠标进入状态*/
+.qn_list_concise_box_max .title_box .title_small:hover{
+	cursor:pointer;
+}
+/*包围列表*/
+.qn_list_concise_box_max .body{
+	
+}
+/*列表*/
+.qn_list_concise_box_max .body .list{
+	
+}
+/*a标签*/
+.qn_list_concise_box_max .body .list .href{
+	display: block;
+	width: 100%;
+	height: 130px;
+	border-bottom: 1px #d7d7d7 dashed;
+	padding: 15px 0px;
+	box-sizing: border-box;
+
+}
+/*a标签鼠标进入*/
+.qn_list_concise_box_max .body .list .href:hover{
+	cursor:pointer;
+}
+/*方块时间盒子*/
+.qn_list_concise_box_max .body .list .href .date{
+	width: 85px;
+	height: 85px;
+	float: left;
+	background: #f2f2f2;
+	padding: 15px 0px;
+	box-sizing: border-box;
+}
+/*大字day*/
+.qn_list_concise_box_max .body .list .href .date .date_day{
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	font-size: 26px;
+	color: #4e4e4e;
+	text-align: center;
+}
+/*小字年/月*/
+.qn_list_concise_box_max .body .list .href .date .date_year_month{
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	color: #686868;
+	text-align: center;
+}
+/*文字包围*/
+.qn_list_concise_box_max .body .list .href .pdiv{
+	width: 80%;
+	height: 85px;
+	margin-left: 15px;
+	float: left;
+}
+/*文字包围标题*/
+.qn_list_concise_box_max .body .list .href .pdiv .title{
+	width: 100%;
+	height: 35px;
+	color: #686868;
+	font-size: 14px;
+	overflow: hidden;
+	line-height: 35px;
+}
+/*文字包围简介*/
+.qn_list_concise_box_max .body .list .href .pdiv .abstract{
+	width: 100%;
+	height: 50px;
+	color: #9a9999;
+	font-size: 12px;
+	overflow: hidden;
+	line-height: 25px;
+}
+	/*简洁列表END*/
+	
+	
+	/*纯文字列表*/
+/*
+
+大标题      小标题
+-------------------
+包围列表-
+	列表-
+		a标签-
+			文字
+		a标签-
+			文字
+		a标签-
+			文字
+		a标签-
+			文字
+*/
+/*最大盒子*/
+.qn_list_font_box_max{
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+}
+/*标题*/
+.qn_list_font_box_max .title_box{
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+	border-bottom:2px dashed #000;
+	padding: 20px 0;
+}
+/*大标题*/
+.qn_list_font_box_max .title_box .title{
+	float: left;
+    line-height: 40px;
+    font-size: 40px;
+    color: #000000;
+    background-image: -webkit-linear-gradient(to left, #c81e0a, #000000);
+    background-image: linear-gradient(to left,#c81e0a,#000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto;
+}
+/*小标题*/
+.qn_list_font_box_max .title_box .title_small{
+    line-height: 30px;
+    font-size: 24px;
+    color: #000000;
+    text-align: right;
+	float: right;
+}
+.qn_list_font_box_max .title_box .title_small:hover{
+	cursor:pointer;
+}
+/*包围列表*/
+.qn_list_font_box_max .body{
+	
+}
+/*列表*/
+.qn_list_font_box_max .body .list{
+	
+}
+/*a标签*/
+.qn_list_font_box_max .body .list .href{
+	
+}
+.qn_list_font_box_max .body .list .href:hover{
+	cursor:pointer;
+}
+/*文字*/
+.qn_list_font_box_max .body .list .href .p1{
+	width: 100%;
+	height: 35px;
+	color: #686868;
+	font-size: 21px;
+	overflow: hidden;
+	line-height: 35px;
+	margin-top: 12px;
+
+	overflow: hidden;/*内容超出后隐藏*/
+	text-overflow: ellipsis;/* 超出内容显示为省略号*/
+	white-space: nowrap;/*文本不进行换行*/
+
+	
+}
+/*纯文字列表END*/
+
+
+
+
+
+
+
+
+/*footer样式*/
+.qn_footer{	
+}
+.qn_footer .list_default{
+	color: #686868;
+}
+.qn_footer .list_default:hover{
+	cursor:pointer;
+}
+
+/*导航条覆写*/
+.navbar{
+	margin-bottom: 0;
+}

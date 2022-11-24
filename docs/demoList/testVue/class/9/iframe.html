@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			.active{
+				font-size:18px;
+				color:#0000ff;
+			}
+			.text-danger{
+				color:red;
+			}
+			.static{
+				padding-left:25px;
+			}
+			.errorClass{
+				font-size:1.2em
+			}
+		</style>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">绑定HTML Class</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			<div class="active">
+				active的样式
+			</div>
+			<div class="text-danger">
+				text-danger的样式
+			</div>
+			<div class="static">
+				static的样式
+			</div>
+			<div id="errorClass">
+				errorClass的样式
+			</div>
+			
+			<br>
+			
+			<div>
+				使用<b class="cred1">v-bind:class</b>绑定的class
+				<div v-bind:class="{ active: isActive }">active</div>
+				<button v-show="isActive" type="button" onclick="app.$data.isActive = false;">移除active</button>
+				<button v-show="!isActive" type="button" onclick="app.$data.isActive = true;">添加active</button>
+			</div>
+			<div>
+				使用<b class="cred1">v-bind:class</b>绑定的class和普通的class可以共存
+				<div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">
+					共存的div
+				</div>
+				<button v-show="hasError" type="button" onclick="app.$data.hasError = false;">移除text-danger</button>
+				<button v-show="!hasError" type="button" onclick="app.$data.hasError = true;">添加text-danger</button>
+			</div>
+			<div>
+				<div :class="classObject">
+					绑定的数据对象不必内联定义在模板里：<b class="cred1">:class</b>=<b class="cgreen1">"classObject"</b>
+				</div>
+				<div :class="classObject2">
+					渲染的结果和上面一样。我们也可以在这里绑定一个返回对象的计算属性。这是一个常用且强大的模式：<b class="cred1">:class</b>=<b class="cgreen1">"classObject2"</b>
+				</div>
+				<div :class="[activeClass,errorClass]">
+					我们可以把一个数组传给 v-bind:class，以应用一个 class 列表：<b class="cred1">:class</b>=<b class="cgreen1">"[activeClass,errorClass]"</b>
+				</div>
+				<div v-bind:class="[isActive ? activeClass : '', errorClass]">
+					如果你也想根据条件切换列表中的 class，可以用三元表达式：<b class="cred1">:class</b>=<b class="cgreen1">"[isActive ? activeClass : '', errorClass]"</b>
+				</div>
+				<div v-bind:class="[{ active: isActive }, errorClass]">
+					不过，当有多个条件 class 时这样写有些繁琐。所以在数组语法中也可以使用对象语法：<b class="cred1">:class</b>=<b class="cgreen1">"[{ active: isActive }, errorClass]"</b>
+				</div>
+				<div>
+					<my-component :class="{ active: isActive }">
+						当用在组件上时也会添加到
+						<br>
+						//使用‘slot’标签，将这段话打印到屏幕
+					</my-component>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.component('my-component', {
+			template: '<p class="foo bar">'
+				+ 'Hi' 
+				+ '<slot></slot>'
+				+ '</p>'
+		});
+		var app = new Vue({
+			el:"#app",
+			data:{
+				isActive: true,
+				hasError: false,
+				classObject:{
+					active: true,
+					'text-danger': false
+				},
+				activeClass: 'active',
+				errorClass: 'text-danger'
+			},
+			computed:{
+				classObject2:function(){
+					return {
+						active: this.isActive && !this.error,
+						'text-danger': this.error && this.error.type === 'fatal'
+					}
+				}
+			},
+			methods:{
+				
+			},
+			watch: {
+				
+			}
+		});
+	</script>
+</html>

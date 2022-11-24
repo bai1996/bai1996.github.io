@@ -1,0 +1,351 @@
+<!DOCTYPE >
+<html>
+	<meta charset="UTF-8">
+	<head>
+		<style>
+			body{
+				overflow-y: hidden;
+				margin:0px;
+			}
+			div{
+				border: 1px solid rgba(255,255,255,0);
+			}
+			video{
+				overflow-x: hidden;
+				margin-left: 0px;
+				width: 100%;
+				height:auto;
+				z-index:-10086;
+			}
+			.logo{
+				position: absolute;
+				top:5%;				
+				left:5%;
+				color: #b0b0b0;
+				font-size: 2em;
+			}
+			.bigLogin{
+				border: 1px solid rgba(255,255,255,0);
+				position: absolute;
+				width:40%;
+				height:40%;
+				top:30%;				
+				left:30%;
+			}
+			.oneCircle{
+				width:100%;
+				height:100%;
+				border-radius:50%;
+				-moz-border-radius:50%; /* 老的 Firefox */
+				background-color:rgba(255,255,255,0.3);
+			}
+			.twoCircle{
+				margin: 5%;
+				width:90%;
+				height:90%;
+				border-radius:50%;
+				-moz-border-radius:50%; /* 老的 Firefox */
+				background-color:rgba(255,255,255,0.3);
+			}
+			.threeCircle{
+				margin: 10%;
+				width:80%;
+				height:80%;
+				border-radius:50%;
+				-moz-border-radius:50%; /* 老的 Firefox */
+				background-color:rgba(255,255,255,0.3);
+			}
+			.loginBox{
+				margin: 20%;
+			}
+			.loginBox input{
+				width: 100%;
+			}
+			.yzm{
+				width:100%;
+				float:none;
+			}
+			.yzm input{
+				width:69%;
+				float: left;
+			}
+			.yzmCode{
+				height: 38px;
+				border: 1px solid #818181;
+				float: left;
+				/*
+				display: block;
+				*/
+				box-sizing: border-box;
+				overflow: hidden;
+				background: url(./img/yanzhengma.png) no-repeat 10px center;
+				padding-left: 45px;
+				color: white;
+				/*
+				margin-bottom: 29px;
+				*/
+				background-size: 23px;
+			}
+			.yzmImgDiv{
+			}
+			.yzmImg{
+				width:30%;
+				height: 38px;
+			}
+			.btnDiv{
+				padding-top:20px;
+			}
+			.btnDiv .dl{
+				width: 35%;
+				height: 40px;
+				float: left;
+				display: block;
+				box-sizing: border-box;
+				background: #1e6ec9;
+				color: white;
+				margin-left: 0;
+			}
+			.btnDiv .zc{
+				width: 35%;
+				height: 40px;
+				float: right;
+				display: block;
+				box-sizing: border-box;
+				background: #11a0b4;
+				color: white;
+			}
+			
+			.case--2{
+				display:none;
+			}
+			.case-2{
+				position: absolute;
+				z-index:10084;
+				width: 700px;
+				height: 700px;
+				border-radius:50%;
+				-moz-border-radius:50%; /* 老的 Firefox */
+				top: 15%;
+				right: 30%;
+				/*
+				border: 1px solid #fff;
+				*/
+				background-color:rgba(255,255,255,0.3)
+			}
+			.case-1{
+				position: absolute;
+				/*
+				margin-top: -25%;
+				*/
+				z-index:10085;
+				width: 600px;
+				height: 600px;
+				border-radius:50%;
+				-moz-border-radius:50%; /* 老的 Firefox */
+				/*
+				border: 1px solid #fff;
+				*/
+			    top: 7%;
+				right: 7%;
+				background-color:rgba(255,255,255,0.3)
+			}
+			.case{
+				position: absolute;
+				/*
+				margin-top: -25%;
+				*/
+				z-index:10086;
+				width: 500px;
+				height: 500px;
+				border-radius:50%;
+				-moz-border-radius:50%; /* 老的 Firefox */
+				top: 8%;
+				right: 8%;
+				/*
+				border: 1px solid #fff;
+				*/
+				text-align: center;
+				background-color:rgba(255,255,255,0.4)
+
+			}
+			.Userlogin{
+				background-image: -webkit-gradient(linear, left 0, right 0, from(rgb(9, 156, 177)), to(rgb(0, 0, 0)));
+				-webkit-background-clip: text; 
+				-webkit-text-fill-color: transparent;
+				font-size: 22px;
+				font-weight: 800;
+				margin: 30px;
+			}
+			.account{
+				width: 55%;
+				height: 38px;
+				border: 1px solid #818181;
+				margin: 0 auto;
+				display: block;
+				box-sizing: border-box;
+				overflow: hidden;
+				background: url(./img/zhanghao.png) no-repeat 10px center;
+				padding-left: 45px;
+				color: white;
+				margin-bottom: 29px;
+				background-size: 23px;
+			}
+			.Password{
+				width: 55%;
+				height: 38px;
+				border: 1px solid #818181;
+				margin: 0 auto;
+				display: block;
+				box-sizing: border-box;
+				overflow: hidden;
+				background: url(./img/mima.png) no-repeat 10px center;
+				padding-left: 45px;
+				color: white;
+				margin-bottom: 29px;
+				background-size: 23px;
+			}
+			.big_yanzhengma{
+				width:55%;
+				text-align: center;
+				padding-left:22.5%;
+			}
+			.Code{
+				width: 48%;
+				height: 38px;
+				border: 1px solid #000;
+				float: left;
+				display: block;
+				box-sizing: border-box;
+				overflow: hidden;
+				background: url(./img/yanzhengma.png) no-repeat 10px center;
+				padding-left: 45px;
+				color: white;
+				margin-bottom: 29px;
+				background-size: 23px;
+			}
+			.img-code{
+				width: 45%;
+				float: left;
+				height: 35px;
+				margin-left: 15px;
+				border: 2px solid #11a0b4;
+			}
+			.yanzhengma{
+				width: 100%;
+				height: 100%;
+			}
+			.denglu{
+				width: 35%;
+				height: 40px;
+				float: left;
+				display: block;
+				box-sizing: border-box;
+				background: #c91e1e;
+				color: white;
+				margin-top: 10px;
+				margin-left: 15px;
+			}
+			.zhuce{
+				width: 35%;
+				height: 40px;
+				float: left;
+				display: block;
+				box-sizing: border-box;
+				background: #11a0b4;
+				color: white;
+				margin-top: 10px;
+				margin-left: 15px;
+			}
+			input::-moz-placeholder {
+				/* Mozilla Firefox 4 to 18 */
+				color: #000; opacity:1; 
+			}
+			::-moz-placeholder {
+				/* Mozilla Firefox 19+ */ color: #000;opacity:1; 
+			} 
+			input:-ms-input-placeholder{
+				color: #000;opacity:1;
+			} 
+			input::-webkit-input-placeholder{
+				color: #000;opacity:1;
+			}
+
+		</style>
+		<script>
+			function gaibian(){
+				//document.getElementsByClassName("bigLogin")
+				var clientHeight = document.getElementsByTagName("html")[0].clientHeight;
+				var clientWidth = document.getElementsByTagName("html")[0].clientWidth;
+				var bigLoginHeight = clientHeight/2;
+				//设置为窗口高度的一半
+				document.getElementsByClassName("bigLogin")[0].style.width = bigLoginHeight;
+				document.getElementsByClassName("bigLogin")[0].style.height = bigLoginHeight;
+				//距离顶部为高度的一半 - 圆的直径的一半
+				document.getElementsByClassName("bigLogin")[0].style.top = clientHeight/2 - bigLoginHeight/2;
+				//距离左边为宽度的一半 - 圆的直径的一半
+				document.getElementsByClassName("bigLogin")[0].style.left = clientWidth/2 - bigLoginHeight/2;
+			}
+			window.onload = gaibian;
+			window.onresize = gaibian;
+		</script>
+	</head>
+	
+	<body>
+		<div class="logo">
+			<image>吉林省危险废物全过程智能监管系统logo</image>
+		</div>
+		<video id="video-index" autoplay="true" loop="true" src="video/index-4.mp4" poster="video/index-4.png"></video>
+			<!--登录-->
+		<div class="bigLogin">
+			<div class="oneCircle">
+			<div class="twoCircle">
+			<div class="threeCircle">
+			<!--div class="logo">logo</div-->
+			<div class="loginBox">
+				<!--div class="Userlogin">用户登录</div-->
+				<div>
+					<input type="text" placeholder="账户  " class="account">
+				</div>
+				<div>
+					<input type="text" placeholder="密码  " class="Password">
+				</div>
+				<div class="yzm">
+					<input type="text" placeholder="验证码" class="yzmCode">
+					<div class="yzmImgDiv">
+						<img src="img/yanzhengma.jpg" class="yzmImg">
+					</div>
+				</div>
+				<div class="btnDiv">
+					<button class="dl">登录</button>
+					<button class="zc">注册</button>
+				</div>
+			</div>
+			</div>
+			</div>
+			</div>
+		</div>
+		<div class="case--2">
+		<div class="case-1">
+		<div class="case">
+			<div class="Userlogin">用户登录</div>
+			<input type="text" placeholder="账户  " class="account">
+			<input type="text" placeholder="密码  " class="Password">
+			<div class="big_yanzhengma">
+				<input type="text" placeholder="验证码  " class="Code">
+				<div class="img-code">
+					<img src="img/yanzhengma.jpg" class="yanzhengma">
+				</div>
+			</div>
+			<div style="width:55%;padding-left:19.5%;">
+				<button class="denglu">登录</button>
+				<button class="zhuce">注册</button>
+			</div>
+			</div>
+		</div>
+		</div>
+		</div>
+	</body>
+	<script>
+		gaibian();
+	</script>
+</html>

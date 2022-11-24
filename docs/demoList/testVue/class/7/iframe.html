@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">变量和不变的量（不会影响到实际的值）</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			<div>
+				<div>message:{{msg}}</div>
+				<div v-once>这个将不会改变:{{msg}}</div>
+				<input type="text" v-model="msg" />
+			</div>
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">打印为html和只打印文字</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			<div>
+				直接输出为html和直接输出，注:v-text和{{"{"+"{rawHtml}"+"}"}}只是写法不同，没有其他差异
+				<div>{{rawHtml}}</div>
+				<div v-text="rawHtml"></div>
+				<div v-html="rawHtml"></div>
+			</div>
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">将vue的数据跟disabled绑定</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			<div>
+				如果 isButtonDisabled 的值是 null、undefined 或 false，则 disabled 特性甚至不会被包含在渲染出来的 &lt;button&gt; 元素中。
+				<br>
+				<button v-bind:disabled="isButtonDisabled">Button</button>
+				<button v-show="isButtonDisabled" type="button" @click="buttonEnable">点击启用</button>
+				<button v-show="!isButtonDisabled" type="button" @click="buttonDisabled">点击禁用</button>
+			</div>
+			
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">使用 JavaScript 表达式</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不应该在模板表达式中试图访问用户定义的全局变量。
+			<div>
+				{{'{'+'{'+'1+1'+'}'+'}'}}=
+				{{ 1 + 1}}
+				<br>
+				{{'{'+'{'+'true'+'?'+'\'YES\':\'NO\''+'}'+'}'}}=
+				{{ true ? 'YES' : 'NO' }}
+				<br>
+				{{'{'+'{'+'msg.split(\'\').reverse().join(\'\')'+'}'+'}'}}=
+				{{msg.split('').reverse().join('') }}
+				<br>
+				<div v-bind:id="'list-' + msg">我的ID是：{{'list-' + msg}}</div>
+				
+				<b class="cred1">这是语句，不是表达式</b>
+				<br>
+				{{'{'+'{'+'var a = 1'+'}'+'}'}}=无法运行
+				<br>
+				<!-- {{var a = 1}} -->
+				<b class="cred1">流控制也不会生效，请使用三元表达式</b>
+				<br>
+				{{'{'+'{'+'if (ok) { return message }'+'}'+'}'}}=无法运行
+				<!-- {{if (ok) { return message }}} -->
+			</div>
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">指令</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			<div>
+				<div>
+					<strong>1.指令</strong>
+				</div>
+				<div>
+					指令 (Directives) 是带有 v- 前缀的特殊特性。指令特性的值预期是单个 JavaScript 表达式 (v-for 是例外情况，稍后我们再讨论)。指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM。回顾我们在介绍中看到的例子：
+					<br>
+					&emsp;&lt;<span class="cblue1">p</span> <span class="cred1">v-if</span>=<span class="cgreen1">"seen"</span>&gt;
+						现在你看到我了
+					&lt;/<span class="cblue1">p</span>&gt;
+					<br>
+					这里，v-if 指令将根据表达式 seen 的值的真假来插入/移除 &lt;p&gt; 元素。
+				</div>
+				<div>
+					<strong>2.参数</strong>
+				</div>
+				<div>
+					一些指令能够接收一个“参数”，在指令名称之后以冒号表示。例如，v-bind 指令可以用于响应式地更新 HTML 特性：
+					<br>
+					&emsp;&lt;<span class="cblue1">a</span> <span class="cred1">v-bind:href</span>=<span class="cgreen1">"url"</span>&gt;...&lt;/<span class="cblue1">a</span>&gt;
+					<br>
+					在这里 href 是参数，告知 v-bind 指令将该元素的 href 特性与表达式 url 的值绑定。
+					<br>
+					另一个例子是 v-on 指令，它用于监听 DOM 事件：
+					<br>
+					&emsp;&lt;<span class="cblue1">a</span> <span class="cred1">v-on:click</span>=<span class="cgreen1">"doSomething"</span>&gt;...&lt;/<span class="cblue1">a</span>&gt;
+					<br>
+					在这里参数是监听的事件名
+				</div>
+				<div>
+					<strong>3.修饰符</strong>
+				</div>
+				<div>
+					修饰符 (Modifiers) 是以半角句号 . 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：
+					<br>
+					&emsp;&lt;<span class="cblue1">form</span> <span class="cred1">v-on:submit.prevent</span>=<span class="cgreen1">"onSubmit"</span>&gt;...&lt;/<span class="cblue1">form</span>&gt;
+				</div>
+				<div>
+					<strong>4.缩写</strong>
+				</div>
+				<div>
+					v- 前缀作为一种视觉提示，用来识别模板中 Vue 特定的特性。当你在使用 Vue.js 为现有标签添加动态行为 (dynamic behavior) 时，v- 前缀很有帮助，然而，对于一些频繁用到的指令来说，就会感到使用繁琐。同时，在构建由 Vue.js 管理所有模板的单页面应用程序 (SPA - single page application) 时，v- 前缀也变得没那么重要了。因此，Vue.js 为 v-bind 和 v-on 这两个最常用的指令，提供了特定简写：
+					<br>
+					<em>v-bind缩写</em>
+					<br>
+					&emsp;&lt;!-- 完整语法 --&gt;
+					<br>
+					<!-- <a v-bind:href="url">...</a> -->
+					&emsp;&lt;<span class="cblue1">a</span> <span class="cred1">v-bind:href</span>=<span class="cgreen1">"url"</span>&gt;...&lt;/<span class="cblue1">a</span>&gt;
+					<br>
+					&emsp;&lt;!-- 缩写 --&gt;
+					<br>
+					<!-- <a :href="url">...</a> -->
+					&emsp;&lt;<span class="cblue1">a</span> <span class="cred1">:href</span>=<span class="cgreen1">"url"</span>&gt;...&lt;/<span class="cblue1">a</span>&gt;					
+					<br>
+					<em>v-on缩写</em>
+					<br>
+					&emsp;&lt;!-- 完整语法 --&gt;
+					<br>
+					<!-- <a v-on:click="doSomething">...</a> -->
+					&emsp;&lt;<span class="cblue1">a</span> <span class="cred1">v-on:click</span>=<span class="cgreen1">"doSomething"</span>&gt;...&lt;/<span class="cblue1">a</span>&gt;
+					<br>
+					&emsp;&lt;!-- 缩写 --&gt;
+					<br>
+					<!-- <a @click="doSomething">...</a> -->
+					&emsp;&lt;<span class="cblue1">a</span> <span class="cred1">@click</span>=<span class="cgreen1">"doSomething"</span>&gt;...&lt;/<span class="cblue1">a</span>&gt;					
+					<br>
+					它们看起来可能与普通的 HTML 略有不同，但 : 与 @ 对于特性名来说都是合法字符，在所有支持 Vue.js 的浏览器都能被正确地解析。而且，它们不会出现在最终渲染的标记中。缩写语法是完全可选的，但随着你更深入地了解它们的作用，你会庆幸拥有它们。
+				</div>
+				
+			</div>
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		let app = new Vue({
+			el:"#app",
+			data:{
+				msg:"原始的消息",
+				rawHtml:'<span class="cred">这是红字</span>',
+				isButtonDisabled:true
+			},
+			methods:{
+				buttonEnable:function(){
+					this.isButtonDisabled = false;
+				},
+				buttonDisabled:function(){
+					this.isButtonDisabled = true;
+				},
+			}
+		});
+	</script>
+</html>

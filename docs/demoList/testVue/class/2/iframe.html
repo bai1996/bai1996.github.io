@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<span v-bind:title="message">
+				鼠标悬停几秒查看动态绑定的提示信息！(标准写法)
+			</span>
+			<br>
+			<br>
+			<span :title="message">
+				鼠标悬停几秒查看动态绑定的提示信息！(简化的写法)
+			</span>
+			<br>
+			<br>
+			<span v-on:mouseenter="refresh">
+				鼠标悬停几秒查看动态绑定的提示信息！(每次进入都刷新)
+			</span>
+			<br>
+			<br>
+			<a href="www.baidu.com" v-on:click.stop.prevent="refreshAll">阻止a标签跳转到baidu</a>
+			<br>
+			<br>
+			<button type="button" @click.stop="refreshAll();">
+				【点击刷新全部提示信息】
+			</button>
+			<br>
+			<br>
+			{{"{"+"{"+"text"+"}"+"}"}}={{text}}
+			<br>
+			{{"{"+"{"+"text2"+"}"+"}"}}={{text2}}
+			<br>
+			{{"{"+"{"+"text2()"+"}"+"}"}}={{text2()}}
+		</div>
+	</body>
+	<script type="text/javascript">
+		function refreshAll(){
+			//更改message的内容有两种
+			//直接将vue的数据更改
+			app.$data.message = "新的时间" + new Date().toLocaleString();
+			//通过vue提供的方法更改数据(由于挂了mouseenter事件，展示不出来。。。)
+			Vue.set(app,"message","新的时间2" + new Date().toLocaleString());
+			
+			//还可以使用 vm.$set 实例方法，这也是全局 Vue.set 方法的别名：
+			// app.$set(app.$data.message,'b',2)
+			//跟级别的是无法动态添加的
+			alert("刷新成功");
+		}
+		var app = new Vue({
+			el:"#app",
+			//vue的数据
+			data:{
+				data:{
+					
+				},
+				//当vue初始化完成后这个变量就会定在这个时间上,不更改不会改变
+				message:"页面加载与" + new Date().toLocaleString(),
+				//自执行的方式直接返回了字符串,再也不执行此方法
+				text:function(){
+					return "来自于方法的字符串";
+				}(),
+				//将变量生命成方法,调用需要加括号
+				text2:function(){
+					return "需要使用括号来执行的方法";
+				}
+			},
+			//vue的方法,在vue中执行的话需要在此处声明,不然vue无法找到方法,如refreshAll,
+			methods:{
+				refreshAll:refreshAll,
+				refresh:function(e){
+					e = e || window.event; // 事件    
+					var target = e.target || e.srcElement; // 获得事件源
+					let text = "刷新的时间" + new Date().toLocaleString();
+					target.title = text;
+				}
+			}
+		});
+	</script>
+</html>

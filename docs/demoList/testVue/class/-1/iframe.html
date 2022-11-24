@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+		<style type="text/css">
+			#app{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" @mouseup="mouseUp" @mousemove="mouseMove">
+			<div @mousedown="mouseDown" :style="[styleObj,styleObj2]" style="background-color: green;"></div>
+			<!-- {{wh}} -->
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			data:{
+				mouseIsClick:false,
+				mouseLayerX:0,
+				mouseLayerY:0,
+				styleObj:{
+					width:250,
+					height:250,
+					cursor:"auto"
+				},
+			},
+			computed:{
+				wh:{
+					get:function(){
+						console.log(this)
+						return "123";
+					},
+					width:function(){
+						return this.styleObj.width + "px"
+					},
+					height:function(){
+						return this.styleObj.height + "px"
+					}
+				},
+// 				styleObj_width:function(){
+// 					return this.styleObj.width + "px";
+// 				},
+// 				styleObj_height:function(){
+// 					return this.styleObj.height + "px";
+// 				},
+// 				s2:{
+// 					get:function(){
+// 						return this.s + "12"
+// 					},
+// 					set:function(data){
+// 						
+// 					}
+// 				},
+				styleObj2:function(){
+					return {
+						width:this.styleObj.width + "px",
+						height:this.styleObj.height + "px"
+					}
+				}
+			},
+			methods:{
+				//鼠标按下时
+				mouseDown:function(e){
+					//按下的状态
+					this.mouseIsClick = true;
+					this.mouseLayerX = e.layerX;
+					this.mouseLayerY = e.layerY;
+				},
+				//鼠标松开时
+				mouseUp:function(e){
+					//清除按下的状态
+					if(this.mouseIsClick){
+						this.mouseIsClick = false;
+					}
+				},
+				//鼠标移动时
+				mouseMove:function(e){
+// 					e = e || window.event; // 事件    
+// 					let target = e.target || e.srcElement; // 获得事件源
+					let maxWidth = this.styleObj.width;
+					let minWidth = this.styleObj.width - 5;
+					let maxHeight = this.styleObj.height;
+					let minHeight = this.styleObj.height - 5;
+					if((minWidth <= e.layerX && e.layerX <= maxWidth) && (minHeight <= e.layerY && e.layerY <= maxHeight)){
+						this.styleObj.cursor = "move";
+						//如果出现了小手,则证明在我们规定的可拖动区
+					}else if(minWidth <= e.layerX && e.layerX <= maxWidth){
+						this.styleObj.cursor = "e-resize";
+					}else if(minHeight <= e.layerY && e.layerY <= maxHeight){
+						this.styleObj.cursor = "n-resize";
+					}else{
+						this.styleObj.cursor = "auto";
+					}
+					
+					//如果鼠标按下了,则根据鼠标的移动更改宽和高
+					if(this.mouseIsClick){
+						// if((minWidth - 10) <= e.layerX || (minHeight - 10) <= e.layerY){
+						let x = e.layerX - this.mouseLayerX;
+						let y = e.layerY - this.mouseLayerY;
+						this.styleObj.width += x;
+						this.styleObj.height += y;
+						this.mouseLayerX = e.layerX;
+						this.mouseLayerY = e.layerY;
+						// }
+					}
+				},
+				out:function(e){
+				}
+			},
+			watch: {
+			}
+		});
+	</script>
+</html>

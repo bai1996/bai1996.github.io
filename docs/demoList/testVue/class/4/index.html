@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8">
+		<title>处理用户输入</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			body{
+				padding-left: 1%;
+				padding-right: 1%;
+				width: 98%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<b class="cred1">v-model</b>可以将vue中的变量和控件绑定起来，更改控件的值就会直接更改其对应绑定的vue变量
+		</div>
+		<iframe src="class/4/iframe.html" width="100%" style="height: calc(100vh - 5%);"></iframe>
+		以下是代码：
+		<div id="code"></div>
+		<script>
+			setTimeout(() => {
+				document.querySelector("#code").innerText = document.querySelector('iframe').contentDocument.body.innerHTML
+			},300);			
+		</script>
+	</body>
+</html>

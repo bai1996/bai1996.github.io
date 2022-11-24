@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mybatis Log Helper</title>
+  <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="shortcut icon" href="" />
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <style>
+    #app {
+      margin-top: 70px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <el-input type="textarea" v-model="pre" placeholder="请复制输入Mybatis打印的日志，须完整Prepareing语句和Parameter语句"
+              :rows="28" style="width: 600px"></el-input>
+    <el-button type="success" @click="convert" style="height: 60px; width: 80px;">转换</el-button>
+    <el-input type="textarea" v-model="res" placeholder="输出结果"
+              :rows="28" style="width: 600px"></el-input>
+  </div>
+
+  <script type="text/javascript">
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          // 原始str
+          pre: '',
+          // 输出结果
+          res: ''
+        }
+      },
+      methods: {
+        convert() {
+          const str = this.pre
+          if (str.indexOf('Preparing') == -1 || str.indexOf('Parameters') == -1) {
+            this.$message({
+              message: '请将Preparing和Parameters语句复制进来',
+              type: 'error',
+              center: true
+            })
+          }
+          // str为完整的三行或两行SQL    提取预编译语句
+          let prepare = str.substring(str.indexOf('Preparing') + 11, str.indexOf('\n'))
+          // 获取参数,去空格
+          const params = str.substring(str.indexOf('Parameters') + 12, index(str, '\n', 2)).replace(/ /g, '')
+          // 参数数组
+          const array = params.split(',')
+          // 循环替换占位符，字符串方式替换每次替换第一个
+          array.map(item => {
+            // 获取每个参数值
+            let newValue = item.substring(0, item.indexOf('('))
+            // 获取参数类型
+            const type = item.substring(item.indexOf('(') + 1, item.indexOf(')'))
+            if ('String' === type) {
+              newValue = "'" + newValue + "'"
+            }
+            prepare = prepare .replace('?', newValue)
+
+          })
+          this.res = prepare
+        }
+      }
+    })
+
+    // 返回字符串str中的第n字符串reg在str中的索引值index
+    function index(str, reg, n) {
+      if (!str || !reg || n <= 0) return -1
+      // 先求出第一个，再递归n-1
+      if (n === 1) {
+        return str.indexOf(reg)
+      }
+      // 注意n-1的索引后一定要加1，负责会一直是第一个reg的索引
+      return str.indexOf(reg, index(str, reg, n - 1) + 1)
+    }
+	// 测试index函数
+    const str = 'hello world ok'
+    const reg = 'o'
+    console.log(index(str, reg, 3))
+  </script>
+</body>
+</html>
+
+

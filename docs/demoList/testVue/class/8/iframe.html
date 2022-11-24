@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">基础栗子</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			
+			<div>原始的msg:{{msg}}</div>
+			<div>翻转后的msg:{{reversedMessage }}</div>
+			<input type="text" v-model="msg" />
+			
+			<br>
+			这里我们声明了一个计算属性 <b class="cgreen1">reversedMessage</b>。我们提供的函数将用作属性 app.reversedMessage 的 getter 函数：
+			<br>
+			<br>
+			console.log(app.reversedMessage) // =&gt; 'olleH'
+			<br>
+			app.message = 'Goodbye'
+			<br>
+			console.log(app.reversedMessage) // =&gt; 'eybdooG'
+			<br>
+			<br>
+			你可以打开浏览器的控制台，自行修改例子中的 app。app.reversedMessage 的值始终取决于 app.message 的值。
+			<br>
+			你可以像绑定普通属性一样在模板中绑定计算属性。Vue 知道 app.reversedMessage 依赖于 app.message，因此当 app.message 发生改变时，所有依赖 app.reversedMessage 的绑定也会更新。而且最妙的是我们已经以声明的方式创建了这种依赖关系：计算属性的 getter 函数是没有副作用 (side effect) 的，这使它更易于测试和理解。
+
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">计算实现缓存vs方法</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			你可能已经注意到我们可以通过在表达式中调用方法来达到同样的效果：
+			<br>
+			&lt;<span class="cblue1">p</span>&gt;
+				Reversed message: "{{ 'reversedMessagem()' }}"
+			&lt;<span class="cblue1">/p</span>&gt;
+			<br>
+			<p>Reversed message: "{{ reversedMessagem() }}"</p>
+			我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果确实是完全相同的。然而，不同的是计算属性是基于它们的依赖进行缓存的。只在相关依赖发生改变时它们才会重新求值。这就意味着只要 message 还没有发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。
+			<br>
+			这也同样意味着下面的计算属性将不再更新，因为 Date.now() 不是响应式依赖：
+			<br>
+				computed: {
+					now: function () {
+						return Date.now()
+					}
+				}			
+			<br>
+			相比之下，每当触发重新渲染时，调用方法将总会再次执行函数。
+			<br>
+			我们为什么需要缓存？假设我们有一个性能开销比较大的计算属性 A，它需要遍历一个巨大的数组并做大量的计算。然后我们可能有其他的计算属性依赖于 A 。如果没有缓存，我们将不可避免的多次执行 A 的 getter！如果你不希望有缓存，请用方法来替代。
+			
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">计算属性 vs 侦听属性</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			Vue 提供了一种更通用的方式来观察和响应 Vue 实例上的数据变动：侦听属性。当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 watch——特别是如果你之前使用过 AngularJS。然而，通常更好的做法是使用计算属性而不是命令式的 watch 回调。细想一下这个例子：
+			<br>
+			&lt;!-- 侦听属性实现方式 --&gt;
+			<br>
+			&lt;<span class="cblue1">div</span>&gt;
+				{{"{"+"{"+"fullName"+"}"+"}"}}
+			&lt;<span class="cblue1">/div</span>&gt;
+			= {{fullName}}
+			<br>
+			&lt;!-- 计算属性实现方式 --&gt;
+			<br>
+			&lt;<span class="cblue1">div</span>&gt;
+				{{"{"+"{"+"fullName2"+"}"+"}"}}
+			&lt;<span class="cblue1">/div</span>&gt;
+			= {{fullName2}}
+			
+
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">属性的getter和setter</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			我们在<b class="cgreen1">computed</b>里创建了testName的getter和setter
+			<br>
+			现在再运行 vm.testName = 'John Doe' 时，setter 会被调用，vm.firstName 和 vm.lastName 也会相应地被更新。
+			<input type="text" v-model="testName"/>
+			<br>
+			{{'{'+'{'+'testName'+'}'+'}'}}=
+			{{testName}}
+			
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+				<span class="text">侦听器</span>
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			<div id="watch-example">
+				使用侦听器侦听<b class="cblue1">question</b>是否发生变化，发生变化则更新answer的内容
+			<p>
+				<input v-model="question">
+			</p>
+			<p>{{answer}}</p>
+			</div>
+			<!-- 分割线 -->
+			<div class="box">
+				<span class="line"></span>
+			</div>
+			<!-- 分割线 -->
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		let app = new Vue({
+			el:"#app",
+			data:{
+				msg:"hello",
+				firstName:"Foo",
+				lastName: 'Bar',
+				fullName: 'Foo Bar',
+				question:"",
+				answer:"没有改变",
+			},
+			computed:{
+				// 计算属性的 getter
+				reversedMessage: function () {
+					// `this` 指向 app 实例
+					return this.msg.split('').reverse().join('');
+				},
+				fullName2: function () {
+					return this.firstName + ' ' + this.lastName
+				},
+				testName:{
+					//getter
+					get:function(){
+						return this.firstName + ' ' + this.lastName;
+					},
+					//setter
+					set:function(newValue){
+						var names = newValue.split(' ');
+						this.firstName = names[0];
+						this.lastName = names[names.length - 1];
+					}
+				}
+			},
+			methods:{
+				reversedMessagem: function () {
+					return this.msg.split('').reverse().join('');
+				}
+			},
+			watch: {
+				firstName: function (val) {
+					this.fullName = val + ' ' + this.lastName
+				},
+				lastName: function (val) {
+					this.fullName = this.firstName + ' ' + val
+				},
+				// 如果 `question` 发生改变，这个函数就会运行
+				question:function(newQuestion,oldQuestion){
+					if(newQuestion == ''){
+						this.answer = '我变回来了！';
+					}else{
+						this.answer = '我变了！';
+					}
+				}
+			}
+		});
+	</script>
+</html>

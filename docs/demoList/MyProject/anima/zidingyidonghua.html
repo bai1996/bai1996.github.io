@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title></title> 
+		<script src="jquery/jquery-1.9.1.min.js"></script>
+  <style type="text/css"> 
+    #box { 
+      width: 100px; 
+      height: 100px; 
+      background-color: red; 
+ 
+      position:absolute; 
+    } 
+ 
+    #pox { 
+      width: 100px; 
+      height: 100px; 
+      background-color: green; 
+      position: absolute; 
+      top: 200px; 
+    } 
+  </style> 
+</head> 
+<body> 
+  <input type="button" class="button" value="开始" /><input type="button" class="stop" value="停止" /> 
+  <input type="button" class="ani" value="查找运动中的动画" /> 
+   
+  <div id="box">box</div> 
+  <div id="pox">pox</div> 
+</body> 
+</html> 
+<script type="text/javascript"> 
+  $(function () { 
+     
+    $(".button").click(function () { 
+      $("#box").animate({ 
+        left: "300px"  //要想使用left top bottom right这种方向性的属性 先必须对"#box元素设置CSS 绝对定位 
+      }) 
+    }) 
+ 
+ 
+    //自定义动画中，每次开始运动都必须是初始位置或初始状态，而有时我们想通过当前位置或状态下再进行动画。jQuery 提供了自定义动画的累加、累减功能。 
+    $(".button").click(function () { 
+      $("#box").animate({ 
+        left: "+=50px" //每点击一次.button按钮，#box元素就往左移动50px 
+      }) 
+    }) 
+     
+ 
+    //-------------------------------------同步动画  
+ 
+ 
+ 
+ 
+    //一个CSS 变化就是一个动画效果，下面的例子中，已经有四个CSS 变化（分别是width，height，opacity，fontSize的变化）实现了多重动画同步运动的效果。（所谓多重同步运动的效果就是，这四个css属性的值在同一时间，同时变化） 
+     
+    $(".button").click(function () { 
+      $("#box").animate({ 
+        width: "300px", 
+        height: "200px", 
+        opacity:0.5, //透明度为0.5 注：透明度的值在0-1之间 
+        fontSize:"200px", //字体大小设为30px 
+      }) //第一个参数：是一个对象，他是键值对的css 
+    }) 
+ 
+ 
+ 
+    //--------------------------------------列队动画  
+ 
+ 
+ 
+    //通过回调函数现实队列动画。（效果就是：首先#box的宽度变为300px 然后高度变为200px,然后透明度变为50%，字体大小变为150px 最后弹出一个“完毕”） 
+    $(".button").click(function () { 
+      $("#box").animate({ width: "300px"}, 1000, function(){ 
+        $("#box").animate({height:"200px"},1000,function(){ 
+          $("#box").animate({opacity:0.5},1000,function(){ 
+            $("#box").animate({fontSize:"150px"},1000,function(){alert("完毕")}) 
+          }); 
+        }); 
+      }); 
+    }) 
+ 
+    //在同一个元素的基础上，使用链式调用也可以实现列队动画 
+    $(".button").click(function () { 
+      $("#box") 
+        .animate({ width: "300px" }, 1000) 
+        .animate({ height: "200px" }, 1000) 
+        .animate({ opacity: 0.5 }, 1000) 
+        .animate({ fontSize: "150px" }, 1000, function () { alert("列队动画执行完毕")}) 
+    }); 
+ 
+    //在同一个元素的基础上，通过依次顺序实现列队动画 (如果有多个元素则不能实现，两个元素之间的动画是同步的。) 
+    $(".button").click(function () { 
+      $("#box").animate({ width: "300px" }, 1000); 
+      $("#box").animate({ height: "200px" }, 1000); 
+      $("#box").animate({ opacity: 0.5 }, 1000); 
+      $("#box").animate({ fontSize: "150px" }, 1000, function () { alert("列队动画执行完毕")}); 
+ 
+    }) 
+ 
+    //如果有多个元素则不能实现 不信请看下面代码 (通过执行下面这段代码，我们发现#box 与#pox这两个元素的动画是同时执行的，属于#box的那两段动画是先执行 $("#box").animate({ width: "300px" }, 1000)然后再执行("#box").animate({ opacity: 0.5 }, 1000); 他们两个有列队动画的效果) 而属于#pox的两段动画是先执行 $("#pox").animate({ height: "200px" }, 1000)然后再执行 $("#pox").animate({ fontSize: "150px" }, 1000)他们两个有列队动画的效果。 但是 $("#box").animate({ width: "300px" }, 1000)与$("#pox").animate({ height: "200px" }, 1000); 同时执行的。 $("#box").animate({ opacity: 0.5 }, 1000)与$("#pox").animate({ fontSize: "150px" }, 1000)是同时执行的。 
+    //前面说了这么一大堆 其实就是： 
+    //#box的第一条和第三条是列队动画 
+    //#pox的第二条和第四条是列队动画 
+ 
+    //#box的第一条和#pox的第二条是同步动画 
+    //#box的第三条和#pox的第四条是同步动画 
+ 
+    $(".button").click(function () { 
+      $("#box").animate({ width: "300px" }, 1000); 
+      $("#pox").animate({ height: "200px" }, 1000); 
+      $("#box").animate({ opacity: 0.5 }, 1000); 
+      $("#pox").animate({ fontSize: "150px" }, 1000, function () { alert("列队动画执行完毕")}); 
+    }) 
+ 
+ 
+    //那我们现在的需求是：不管你有几个元素，我都要他们依次实现列队动画效果。(测试了一下，只能用这种回调函数嵌套的方式来实现了) 
+ 
+    $(".button").click(function () { 
+      $("#box").animate({ width: "300px" }, 1000, function () { 
+        $("#pox").animate({ height: "200px" }, 1000, function () { 
+          $("#box").animate({ height: "200px"}, 1000, function () { 
+            $("#pox").animate({ fontSize: "150px" }, 1000, function () { alert("列队动画执行完毕") }); 
+          }) 
+        }) 
+      }) 
+    }) 
+ 
+ 
+ 
+    // ---------------------------------动画与非动画 进行队列 【queue()】 
+ 
+ 
+ 
+ 
+    //我们知道动画可以有列队效果。但是一个普通的css（比如改变背景颜色）如果实现与动画进行列队呢？ 
+    $(".button").click(function () { 
+      $("#box").slideUp(1000).slideDown(1000).css("background", "yellow") 
+    }) 
+ 
+    //本来我们是想要实现队列动画的，也就是先让#box滑动隐藏，然后再让它滑动显示，最后让它改变颜色。可是我们运行这段呢代码，我们看到第一时间就执行了css("background","yellow")这段代码。 
+    //通过上面的代码我们了解到 css()方法不是动画方法，会和第一个动画同时执行。也就是说非动画不能列队。 
+ 
+    //现在问题又来了。我现在想要实现列队动画，也想非动画和动画一起列队怎么办呢？ 其实我们可以使用回调函数实现的。请看下面的代码 
+ 
+    $(".button").click(function () { 
+      $("#box") 
+        .slideUp(1000) 
+        .slideDown(1000, function () { $(this).css("background", "yellow") }) 
+        .hide(3000); 
+    }) 
+ 
+    //但如果上面这样的话，当列队动画繁多的时候，可读性不但下降，而原本的动画方法不够清晰。所以，我们的想法是每个操作都是自己独立的方法。那么jQuery 提供了一个类似于回调函数的方法：.queue() 
+ 
+    $(".button").click(function () {  //三个动画。 
+      $("#box") 
+        .slideUp(1000) 
+        .slideDown(1000) 
+        .queue(function () { $(this).css("background", "yellow");}) 
+    }) 
+ 
+    //现在，我们想继续在.queue()方法后面再增加一个隐藏动画，这时发现居然无法实现。这是.queue()特性导致的。有两种方法可以解决这个问题，jQuery 的.queue()的回调函数可以传递一个参数，这个参数是next 函数，在结尾处调用这个next()方法即可再链式执行列队动画。 
+ 
+    //链式编程实现队列动画 
+    $(".button").click(function () { //四个动画 
+      $("#box") 
+        .slideUp(1000) 
+        .slideDown(1000) 
+        .queue(function (next) { //这个next是一个函数 
+          $(this).css("background", "yellow"); 
+          next();}) 
+        .hide(1000); 
+    }); 
+ 
+    //顺序编程实现队列动画 我们看到使用顺序调用的列队，逐个执行，非常清晰 
+    $(".button").click(function () { 
+      $("#box").slideUp(1000); 
+      $("#box").slideDown(1000); 
+      $("#box").queue(function (next) { 
+        $(this).css("background", "yellow"); 
+        next(); }); 
+      $("#box").hide(1000); 
+    }); 
+ 
+     
+ 
+    //因为next 函数是jQuery1.4 版本以后才出现的，而之前我们普遍使用的是.dequeue()方法。意思为执行下一个元素列队中的函数。 
+    //使用.dequeue()方法执行下一个函数动画 
+    //$(".button").click(function () { 
+    //  $('#box').slideUp('slow').slideDown('slow').queue(function () { 
+    //    $(this).css('background', 'orange'); 
+    //    $(this).dequeue(); //相当于上面的那句next() 只是这里的function（）括号里不像上面那样需要传递一个next函数 
+    //  }).hide(1000) 
+    //}); 
+ 
+ 
+    //-----------------------------动画的清除 【clearQueue()】 
+ 
+ 
+ 
+    //jQuery 还提供了一个清理列队的功能方法：.clearQueue()。把它放入一个列队的回调函 数或.queue()方法里，就可以把剩下为执行的列队给移除。 
+ 
+    //清理动画列队 
+ 
+    //假如我想在执行完第二个动画那就就不再执行了。那么只要在第二个动画的回调函数哪里添加一句$(this).clearQueue()就可以停止后面的列队动画了 
+    $(".button").click(function () { 
+       
+      $("#box") 
+        .slideUp(1000) 
+        .slideDown(1000, function () { $(this).clearQueue() }) 
+        .queue(function (next) { $(this).css("background", "yellow"); next() }) 
+        .hide(1000); 
+    }) 
+ 
+    //那么如果获取列队动画的长度呢？  
+ 
+    function getQueueCount() { 
+      return $("#box").queue("fx").length; //获取当前列队的长度，fx 是默认列队的参数 
+    } 
+     
+    //用法 
+    $(".button").click(function () { 
+ 
+      //下面这段代码总共有slideUp，slideDown，queue，hide这四个动画 
+      $("#box") 
+        .slideUp(1000, function () { alert(getQueueCount()) }) //执行到这一步的时候会打印出：4 它后面还有三个动画，所以下一步的时候会打印出3 
+        .slideDown(1000, function () { alert(getQueueCount()) }) //执行到这一步的时候会打印出：3 
+        .queue(function (next) { alert(getQueueCount()); $(this).css("background", "yellow"); next() }) //执行到这一步的时候会打印出：2 
+        .hide(1000, function () { alert(getQueueCount()) }); //执行到这一步的时候会打印出：1 
+ 
+    }); 
+ 
+ 
+   
+ 
+    //---------------------------------动画的停止【stop()】 
+ 
+ 
+ 
+    //很多时候需要停止正在运行中的动画，jQuery 为此提供了一个.stop()方法。它有两个可选参数：.stop(clearQueue, gotoEnd)；clearQueue 传递一个布尔值，代表是否清空未执行完的动画列队，gotoEnd 代表是否直接将正在执行的动画跳转到末状态。 
+ 
+    $(".button").click(function () { 
+      $("#box") 
+        .animate({left:"1000px"} ,3000) 
+    }) 
+ 
+    $(".stop").click(function () { 
+      $("#box").stop(); //将#box这个元素的动画停止掉。没有参数的stop()方法只是单纯的停止动画 
+    }) 
+  
+    //那下面再来了解下，列队动画的停止 
+     
+    $(".button").click(function () { 
+      $("#box").animate({ left: "300px" },1000) 
+           .animate({ bottom: "300px" }, 1000) 
+           .animate({ width: "300px" }, 1000) 
+           .animate({ height: "300px" }, 1000)                   
+    }) 
+ 
+    //$(".stop").click(function () { 
+    //  $("#box").stop(); // 如果用没有参数的stop()方法去停止有列队动画，那么只会停止掉第一个列队动画，后面的列队动画会继续执行。 
+    //}) 
+ 
+    //那么现在我想当我点击停止按钮的时候，我就需要整个将列队动画停止下来，而不是仅仅停止第一个，怎么办呢？ 答案是：我们可以给stop()方法加参数 
+    //stop()方法有两个可选参数： 
+    //第一个可选参数，如果为true，就代表停止并清除掉后面的队列动画。即：动画完全停止（默认值为false） 
+    //第二个可选参数，如果为true，就代表停止并清除掉后面的队列动画，并且当前动画会立刻跳转到当前这条动画执行完毕的末尾位置（默认为false） 
+    $(".stop").click(function () { $("#box").stop(true, true); }) 
+ 
+ 
+   
+ 
+    //--------------------------------动画的延迟【delay（）】 
+ 
+ 
+    $(".button").click(function () { 
+      $("#box").delay(2000)    //如果delay(2000) 直接写在$("#box")元素后面，就表示延迟2秒再执行动画 
+        .animate({ left: "300px" }, 1000) 
+        .animate({ bottom: "300px" }, 1000) 
+        .animate({ width: "300px" }, 1000).delay(3000) // 写在这里表示等animate({ width: "300px" }, 1000)这段代码执行完后，延迟3秒再执行下面的代码 
+        .animate({ height: "300px" }, 1000) 
+    }) 
+ 
+ 
+ 
+    //-----------------------------------获取当前正在执行的动画 【:animated 过滤器】 
+ 
+ 
+    $(".button").click(function () { 
+      //$("#box").slideUp(1000, function abc() { 
+      //  $(this).slideToggle(1000, abc); //无限循环的调用自己。实现动画不停的执行。 
+      //}) 
+      //或者用这以下这种方式也可以实现 动画不停的自执行 
+      $("#box").slideToggle(1000, function () { 
+        $(this).slideToggle(1000, arguments.callee); //arguments.callee表示调用自身。 和上面那一句是一样的 
+      }) 
+ 
+    }) 
+ 
+    $(".ani").click(function () { 
+      $(":animated").css("background", "blue").stop(true); //获取当前正在执行的动画，并将它的颜色改为蓝色后停止动画的执行 
+    }) 
+ 
+ 
+ 
+    //---------------------动画的全局属性【$.fx.off属性可以关闭页面上所有的动画】【$.fx.interval属性可以调整动画每秒运行的帧数】 
+ 
+    
+    //$.fx.interval 属性用于设置jQuery动画每隔多少毫秒绘制一帧图像 (默认为13 毫秒) 数字越小越流畅，但可能影响浏览器性能。 
+     
+    //$.fx.interval = 100; // 设置动画绘制一帧帧的时间为100毫秒，（默认是13毫秒） 
+ 
+    //$.fx.off = true; //关闭页面上所有的动画 
+     
+ 
+ 
+    //补充：在.animate()方法中，还有一个参数，easing 运动方式，这个参数，大部分参数值需要通过插件来使用，在后面的课程中，会详细讲解。自带的参数有两个：swing(缓动)、linear(匀速)，默认为swing。 
+    $('.button').click(function () { 
+ 
+      $('#box').animate({ left: '800px' }, 1000, 'swing'); //swing 表示缓动运行，缓速运动有个特点，就是刚开始运行的慢，到了中间就比较快，最后又慢下来（中间快，两头慢） 整段代码的意思就是在1秒钟内 以缓动方式运行动画 
+ 
+      $('#pox').animate({ left: '800px' }, 1000, 'linear'); //linear表示匀速运行，速度一直不变 整段代码的意思就是在1秒钟内 以匀速方式运行动画 
+    }); 
+  }); 
+</script> 

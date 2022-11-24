@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8">
+		<title>基于vue的hello Word ！</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			body{
+				padding-left: 1%;
+				padding-right: 1%;
+				width: 98%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			基于vue的 hello Word的实现(<span class="cred">下面的是图片，有染色看着好看点</span>)
+			<br>
+			<div>
+				<img src="class/1/img/helloWord.png">
+			</div>
+			首先我们需要在<em class="cred">body</em>中添加一个标签，作为vue的容器,
+			<br>
+			<div>
+				<em>
+				<!-- &lt;&gt; -->
+				&emsp;&lt;<span class="cblue1">div</span> <span class="cred1">id</span>=<span class="cgreen1">"app"</span>&gt;
+				<br>
+				&emsp;&lt;/<span class="cblue1">div</span>&gt;
+				</em>
+			</div>
+			然后将初始化vue的代码写在这个div后面或是写在<em class="cblue1">document.ready</em>里
+			<br>
+			<div>
+				<em>
+				<b class="cred1">el</b>为容器的选择器（可用#，.等选择器）
+				<br>
+				<b class="cred1">data</b>,为vue中的数据，我们定义了一个text变量
+				<br>
+				在<b class="cred1">#app</b>容器中也写了个<b class="cred1">{{text}}</b>，当执行时，<b class="cred1">{{text}}</b>就会被替换为其<b class="cred1">text</b>的值
+				</em>
+			</div>
+			<br>
+			下面是实例：
+		</div>
+		<iframe src="class/1/iframe.html" width="100%"></iframe>
+		以下是代码：
+		<div id="code"></div>
+		<script>
+			setTimeout(() => {
+				document.querySelector("#code").innerText = document.querySelector('iframe').contentDocument.body.innerHTML
+			},300);			
+		</script>
+		<!-- 自己动手做: -->
+		<!-- <iframe src="class/1/diyPage.html" width="100%" style="height:100vh;"></iframe> -->
+	</body>
+</html>

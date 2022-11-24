@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>抽奖</title>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<style>
+	.zhongjiang{
+		margin: 20px 0;
+		text-align: center;
+	}
+	.zhongjiang span:nth-child(2){
+		color: red;
+	}
+	.box {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.draw {
+		width: 100px;
+		height: 30px;
+		background: chocolate;
+		text-align: center;
+		line-height: 30px;
+		color: #fff;
+		cursor: pointer;
+		margin: 10px 0;
+	}
+
+	.row {
+		margin: 10px 0px;
+		width: 100px;
+		height: 30px;
+		line-height: 30px;
+		background: cadetblue;
+		color: #fff;
+		text-align: center;
+	}
+
+	.box .row:nth-child(1) {
+		top: 0;
+		left: 0;
+	}
+
+	.box .row:nth-child(2) {
+		top: 0;
+		left: 50%;
+		/* transform: translate(-50%, 0); */
+	}
+
+	.box .row:nth-child(3) {
+		top: 0;
+		right: 0;
+	}
+
+	.box .row:nth-child(4) {
+		top: 50%;
+		right: 0;
+		/* transform: translate(0, -50%); */
+	}
+
+	.box .row:nth-child(5) {
+		bottom: 0;
+		right: 0;
+	}
+
+	.box .row:nth-child(6) {
+		bottom: 0;
+		right: 50%;
+		/* transform: translate(50%, 0); */
+	}
+
+	.box .row:nth-child(7) {
+		bottom: 0;
+		left: 0;
+	}
+
+	.box .row:nth-child(8) {
+		top: 50%;
+		left: 0;
+		/* transform: translate(0, -50%); */
+	}
+	.block{
+		/*一次执行时间*/
+		animation-duration: 4s;
+		/*永远执行*/
+		animation-iteration-count: infinite;
+		animation-name: mymove;
+	}
+	.block:nth-child(2n){
+	}
+	.block:nth-child(2n-1){
+		animation-delay:2s;
+	}
+	@keyframes mymove {
+		from {background-color: #bf9272;}
+		to {background-color: #449295;}
+	}
+
+	.active {
+		background: chocolate !important;
+	}
+</style>
+</head>
+<body>
+<div id="databinding">
+	        <div class="box">
+	            <div class="row" :class="{active:select == index,block:!flag}" v-for="(item,index) in list" :key="index">
+	                {{item.name}}
+				</div>
+	            <div class="draw" @click="startDraw()">抽奖</div>
+	        </div>
+			<div class="zhongjiang">
+				<span>中奖产品为 : </span>
+				<span>{{meunName}}</span>
+			</div>
+	    </div>
+<script type = "text/javascript">
+var vm = new Vue({
+el: '#databinding',
+    data: {
+        list: [
+        	{
+        		name: "饭菜"
+        	},
+        	{
+        		name: "麻辣烫"
+        	},
+        	{
+        		name: "米线"
+        	},
+        	{
+        		name: "土豆粉"
+        	},
+        	{
+        		name: "面条"
+        	},
+        	{
+        		name: "饭菜2"
+        	},
+        	{
+        		name: "快餐"
+        	},
+        	{
+        		name: "黄焖鸡"
+        	},
+        	{
+        		name: "饭包"
+        	},
+        	{
+        		name: "麻辣香锅"
+        	},
+        	{
+        		name: "饭菜3"
+        	},
+        	{
+        		name: "炸串烧烤"
+        	},
+        	{
+        		name: "大骨头"
+        	},
+        	{
+        		name: "火锅"
+        	},
+        	{
+        		name: "饭菜4"
+        	},
+        	{
+        		name: "不吃"
+        	},
+        	{
+        		name: "水"
+        	},
+        	{
+        		name: "粥混沌"
+        	},
+			{
+				name: "米粉"
+			},
+        	{
+        		name: "方便面"
+        	},
+			{
+				name: "凉皮"
+			},
+			{
+				name: "饺子"
+			},
+			{
+				name: "锡纸花甲"
+			},
+			{
+				name: "炸鸡"
+			},
+			{
+				name: "酸辣粉"
+			},
+        ],
+        flag: true,//是否开始抽奖
+        select: 0,//页面对应抽奖下标
+        timer: "",
+        count: 0,
+        meunName:''
+    },
+    methods : {
+		startDraw() {
+			if (this.flag == true) {
+				this.flag = false
+				this.timer = setInterval(() => {
+					this.spinPrize()
+				}, 100)
+			}
+		},
+		spinPrize() {
+			var spin = 1 //旋转圈数
+			var num=this.list.length;
+			var win = parseInt(Math.random()*num) //中奖产品 0-7 随机数
+			this.select += 1
+			if (this.select > num && this.count != spin) {
+				this.select = 0
+				this.count += 1
+			}
+			console.log(this.select);
+			if(this.select>num){
+			this.select = 0
+			}
+			if (this.select == win && this.count == spin) {
+				clearInterval(this.timer)
+				this.flag = true
+				this.count = 0
+			}
+			if(this.list[this.select] != null){
+				this.meunName=this.list[this.select].name
+			}
+		},
+    }
+});
+</script>
+</body>
+</html>

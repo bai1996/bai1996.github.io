@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<div>
+				【&lt;todo-item&gt;&lt;/todo-item&gt;】
+				<br>
+				<todo-item></todo-item>
+			</div>
+			<div>
+				<!--
+					现在我们为每个 todo-item 提供 todo 对象
+					todo 对象是变量，即其内容可以是动态的。
+					我们也需要为每个组件提供一个“key”，稍后再
+					作详细解释。
+				-->
+				<br>
+				【&lt;todo-item-plus :todo="obj"&gt;&lt;/todo-item-plus&gt;】
+				<br>
+				<todo-item-plus :todo="obj" :todo2="159753">
+					xaxaaxaxasadakdsajdadjsakldsajdsadsjdskad
+				</todo-item-plus>
+				<br>
+				【&lt;todo-item-plus v-for="item in list" :todo="item" :key="item.id"&gt;&lt;/todo-item-plus&gt;】
+				<br>
+				<todo-item-plus v-for="item in list" :todo="item" :key="item.id">
+					<input />
+				</todo-item-plus>
+				<!-- 
+					首先我们使用了组件，
+					用来v-for循环，循环了list变量，定义了每次循环的对象item，将其扔进了组件的todo里（props的属性）
+					然后组件收到了todo对象，开始按照template的格式渲染
+				 -->
+			</div>
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		//定义最小化的组件
+		Vue.component("todo-item",{
+			template:"<li>这句话来自于‘todo-item组件’</li>"
+		});
+		Vue.component("todo-item-plus",{
+			// todo-item 组件现在接受一个
+			// "prop"，类似于一个自定义特性。
+			// 这个 prop 名为 todo。
+			props:["todo","todo2"],
+			template:"<li>{{todo.text}}-<slot></slot>-{{todo2}}</li>"
+		})
+		var app = new Vue({
+			el:"#app",
+			data:{
+				obj:{id:3,text:"瓜子"},
+				list:[
+					{id:0,text:'蔬菜'},
+					{id:1,text:'奶酪'},
+					{id:2,text:'随便其它什么人吃的东西'}
+				]
+			},
+			methods:{
+				
+			}
+		});
+	</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			body{
+				padding-left: 1%;
+				padding-right: 1%;
+				width: 98%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+		</div>
+		<iframe src="class/-2/iframe.html" width="100%" style="height: calc(100vh - 5%);"></iframe>
+		以下是代码：
+		<div id="code"></div>
+		<script>
+			setTimeout(() => {
+				document.querySelector("#code").innerText = document.querySelector('iframe').contentDocument.body.innerHTML
+			},300);			
+		</script>
+	</body>
+</html>

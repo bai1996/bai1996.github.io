@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base  href=""/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+	<link rel="stylesheet" href="./css/audioplayer.css" />
+	<script src="/library/jquery/jquery-1.9.1.min.js"></script>
+	<script src="./js/audioplayer.js"></script>
+    <style>
+			
+			.mui-grid-view.mui-grid-9 {
+				margin: 0;
+				padding: 0;
+				border: none;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 8px 10px;
+				border: none
+			}
+			/*.audioplayer-volume:hover .audioplayer-volume-adjust {
+    			top: auto;
+    			bottom: auto;
+			}
+			.audioplayer-volume-adjust div div {
+			    position: static;
+			}*/
+			.audioplayer-volume-adjust {
+				height: 3.25em;
+    		}
+		</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav bg-white">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left color_bule"></a>
+	    <h1 class="mui-title color_bule">微课详细</h1>
+	    <div  id="collectionBtn1" style="position: absolute; right: 5px;display: block;margin-top: 0px;" ><span class="mui-icon mui-icon-star"></span></div> 
+		<div  id="collectionBtn2" style="position: absolute; right: 5px;display: none;margin-top: 0px;" ><span class=" mui-icon mui-icon-star-filled color_huang"></span></div> 
+	</header>
+	
+	
+<!--<div id="courseName"></div>
+------------------------------------------|
+<div id="wrapper">
+<audio id="mediaPath" src="/static/common/music/undefindeMusic.mp3" preload="preload" controls>
+	您的浏览器不支持 audio 标签。
+</audio>
+</div>
+|------------------------------------------|
+    <p id="lazy">00:00:00</p>  
+    <input id="courseMediaTime" />
+    <button onclick="shuaxian()">刷新</button>
+
+|------------------------------------------
+<div id="teacherName"></div> 	
+<div id="courseImageText" style="height: 500px;position:absolute;"></div> 	
+<div id="date"></div> 	
+	-->
+	
+	<div class="mui-content" >
+	    <div class="class_detailed">
+	    	<!--课程名-->
+	    	<div id="courseName" class="class_detailed_p"></div>
+				<div id="wrapper">
+					<!--计时时间-->
+					<input type="hidden" id="courseMediaTime" />
+					<!--课程时长（秒）-->
+					<input type="hidden" id="courseDuration" />
+					<!--随堂测试答题时长（分）-->
+					<input type="hidden" id="testDuration" />
+					<!--<div class="audioPlay audioplayer-stopped">-->
+					<audio id="mediaPath" class="class_detailed_player" preload="preload" controls>
+						<source src="http://yzjy-pri.oss-cn-beijing.aliyuncs.com/2018051322341484-%E5%A2%9E%E5%80%BC%E7%A8%8E%E4%BC%98%E6%83%A04-2.mp3?Expires=1546956282&amp;OSSAccessKeyId=STS.NJ6EJDFcGCs3C4u7QRFYDrHma&amp;Signature=hp2jGyt1eZziwX8EMN5pY7Jbtb0%3D&amp;security-token=CAISywJ1q6Ft5B2yfSjIr4mDDvDwq7xm9LHYQRLE01EHStZonY3Ggzz2IHhOf3lhAeAXtf0%2Fm2tR5voZlqFiWZ1UABScNJO0AmLkG0bzDbDasumZsJb%2F4f%2FMQBp2YnyW9cvWZPqDHLG5U%2FyxalfCuzZuyL%2FhD1uLVECkNpv7wfwAac8MDC25diZhDtVbLRd5yqodLmCDGvuxFRToj2HMdmgK3DBxkmRi86%2By79SB4x7F9j3Ax%2FQSup76L%2BriDbVlN4wtVMyujq4kNPjQwixBrgBQ9cUIhadfqzDcpYPfURsD8geEIq%2FM6Nwobi0BP%2FRlSvIe9qGgzach6ryNy76akUgdYbtnNA3EX52lzcf%2BH%2BekC800b76TOQ6WiorUZsit41J%2FOCJEb1oaJ4E7WHZ0CA0xTDbBMbOg%2B13MeAqqR6%2BD1LAs1p543817GksO%2F%2BDlGoABqCI6HSIlFTORYb6kP3mbl1fuUKWWq0vELf%2BMbkZRcnWol6WWkDE028O2SJ0g2TknsPkrW5iU5hJRHFRrVGg3%2BkUWQNaWhii1NUz%2BluzNI31s2A83wW0LoGYGcXkiDbYXnPqqQbXjmMLUv1OoidyOLwZo04I6yPz61Bswd%2F0Y6VQ%3D" type="audio/mpeg">" type="audio/mpeg">
+						您的浏览器不支持音频播放。
+					</audio>
+					
+					
+					<div id = "replayDiv" onclick="replayAudio()" style="display: none;text-decoration:underline;color:blue;"><br />您的网络不稳定，点击此处重新加载。</div>
+					
+					
+					
+					    <!--<audio src="audio.wav" preload="auto" controls></audio>-->
+					    <!--<div class="audioPlayer-playpause" title="Play"><a href="#">Play</a></div>
+					    <div class="audioPlayer-time audioPlayer-time-current">00:00</div>
+					    <div class="audioPlayer-bar">
+					        <div class="audioPlayer-bar-loaded"></div>
+					        <div class="audioPlayer-bar-played"></div>
+					    </div>
+					    <div class="audioPlayer-time audioPlayer-time-duration">&hellip;</div>
+					    <div class="audioPlayer-novolume">
+					        <div class="audioPlayer-volume-button" title="Volume"><a href="#">Volume</a></div>
+					        <div class="audioPlayer-volume-adjust"><div><div></div></div></div>
+					    </div>
+					</div>-->
+				</div>
+	    </div>
+
+	</div>
+		<script>
+		var ct =0; //当前播放时间
+		var currentDate; //当前接口返回数据
+			
+		var courseId ;
+		var courseTitle;
+		var courseIcon;
+		var courseEffectiveClassTime;
+		var defaults = {}
+		  , one_second = 1000
+		  , one_minute = one_second * 60
+		  , one_hour = one_minute * 60
+		  , one_day = one_hour * 24
+		  , startDate = new Date()
+		  , theEndOfTheTime = false
+		  //兼容
+	   	//http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+	   	var requestAnimationFrame = (function() {
+	     	return window.requestAnimationFrame       || 
+	            window.webkitRequestAnimationFrame || 
+	            window.mozRequestAnimationFrame    || 
+	            window.oRequestAnimationFrame      || 
+	            window.msRequestAnimationFrame     || 
+	            function( callback ){
+	              window.setTimeout(callback, 1000 / 60);
+	            };
+	   	}());
+	   	
+		//计时，计算从音频播放到音频结束时间
+		
+		$(function(){
+			//$("#mediaPath").audioPlayer();
+			return;
+			this.audioPlay("http://www.runoob.com/try/demo_source/horse.ogg",$("#mediaPath")[0],function(){
+				
+			});
+
+		})
+
+		function bf(){
+			var audio = document.getElementById('mediaPath'); 
+			if(audio!==null){             
+			   //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+			 if(audio.paused){                 
+			    audio.play();//audio.play();// 这个就是播放  
+			 }else{
+			 	audio.pause();// 这个就是暂停
+			 }
+			}
+		}
+		
+		this.audioPlay=function(soundPath,dom,callback){
+//			$(dom).attr("src","http://www.runoob.com/try/demo_source/horse.ogg");//假的
+			$(dom).find("source").attr("src","http://www.runoob.com/try/demo_source/horse.ogg");//假的
+			
+			//$(dom).attr("src",soundPath);
+	        var shapeAudio=document.getElementById("mediaPath");
+	        //console.log(dom);
+	        shapeAudio.currentTime = ct;
+	        shapeAudio.play();
+	        
+//			tick();//开始计时
+
+	        /*判断声音是否播放完成，播放完成之后执行回调函数*/
+//	        if(callback != undefined){
+//	            var is_playFinish = setInterval(function(){
+//		            if(shapeAudio.ended){
+//	                    callback();
+//	                    window.clearInterval(is_playFinish);
+//		            }
+//	            }, 10);
+//	        }
+			shapeAudio.onended = function() 
+			{
+			     callback();
+			};
+			
+			shapeAudio.onabort = function(e){
+				console.log("--------------onabort：该事件在多媒体数据终止加载时触发，而不是发生错误时触发。---------------");
+				for(var i in arguments){
+					console.log(JSON.stringify(arguments[i]));
+				}
+//				console.log(JSON.stringify(e));
+				console.log("-----------------------------");
+			}
+
+			shapeAudio.onemptied = function(e){
+				console.log("-------------------onemptied-------------------");
+				for(var i in arguments){
+					console.log(JSON.stringify(arguments[i]));
+				}
+//				console.log(JSON.stringify(e));
+			}
+
+			shapeAudio.onerror = function(e) {
+				console.log("---------------onerror 事件在视频/音频（audio/video）数据加载期间发生错误时触发。--------------");
+				for(var i in arguments){
+					console.log(JSON.stringify(arguments[i]));
+				}
+//				console.log(JSON.stringify(e));
+				console.log("-----------------------------");
+//			    alert("Error! 出错了");
+   				ct = shapeAudio.currentTime//播放进度
+   				document.getElementById("replayDiv").style.display = "block";
+			};
+			
+			shapeAudio.onsuspend = function(e){
+				console.log("----------- suspend 事件在浏览器刻意不加载媒体数据时触发。该事件在媒体数据被阻止加载时触发。 可以是完成加载后触发，或者因为被暂停的原因。---------------");
+				for(var i in arguments){
+					console.log(JSON.stringify(arguments[i]));
+				}
+				console.log("-----------------------------");
+			}
+
+		}
+		
+		//重新播放音频
+		function replayAudio(){
+//			var shapeAudio=document.getElementById("mediaPath");
+//			shapeAudio.currentTime = ct;
+//			shapeAudio.play();
+//			document.getElementById("replayDiv").style.display = "none";
+
+			initDataCallback(currentDate);
+			document.getElementById("replayDiv").style.display = "none";
+		}
+
+	</script>
+
+</body>
+</html>
