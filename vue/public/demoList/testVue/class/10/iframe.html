@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<vue-template>123</vue-template>
+		</div>
+	</body>
+	<script type="module">
+		import { template } from "./vue.vue.html";
+		var app = new Vue({
+			el:"#app",
+			components:{
+				"vue-template":template
+			},
+			data:{
+				msg:"123"
+			},
+			computed:{
+				
+			},
+			methods:{
+				
+			},
+			watch: {
+				
+			}
+		});
+	</script>
+	<script type="text/javascript">
+		
+// 		export default {
+// 			components: {
+// 				"vue-template":template
+// 			},
+// 		}
+	</script>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="/library/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/library/tableDnD/css/tablednd.css" rel="stylesheet">
+		<script src="/library/jquery/1.12.4/jquery.min.js"></script>
+		<script src="/library/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="/library/tableDnD/1.0.3/jquery.tablednd.js"></script>
+		<script>
+			$(function(){
+				//从哪来,到哪去
+				var fromIndex,toIndex;
+				$("#testTable").tableDnD({
+					//点击拖拽时自动添加的class名称
+					onDragClass: "myDragClass",
+					//当删除时(0.5版本为拖动结束时触发，1.0.3版本是删除时触发)
+					onDrop: function(table,row) {
+					},
+					//当拖动开始时(按下鼠标)
+					onDragStart: function(table,row) {
+						fromIndex = $(row).index();
+					},
+					//当拖动结束时(松开鼠标1.0.3)
+					onDragStop:function(table,row){
+						toIndex = $(row).index();
+						//重新排序
+						$("#testTable tbody tr").each(function(index, element) {
+							//循环查找这一行下的元素(输入框等.)
+							$(this).find("span[name*=columnList],select[name*=columnList],input[name*=columnList]").each(function() {
+								//更改其index
+								var name = $(this).attr("name"),
+									mainName = name.split(".")[1],
+									newName = "columnList[" + index + "]." + mainName;
+								$(this).attr("name", newName);
+								//如果是soft元素,则更改其本身是值和显示的值
+								if(newName.indexOf(".sort") != -1){
+									$(this).val(index);
+									$(this).next().text(index);
+								}
+							});
+// 							$(this).find("label[id*=columnList]").each(function() {
+// 								var id = $(this).attr("id").split(".")[1],
+// 									id = "columnList[" + index + "]." + id;
+// 								$(this).attr("id", id);
+// 								$(this).attr("for", "columnList[" + index + "].jdbcType")
+// 							});
+// 							$(this).find("input[name*=name]").each(function() {
+// 								var name = $(this).attr("name").split(".")[1],
+// 									name = "page-columnList[" + index + "]." + name;
+// 								$(this).attr("name", name)
+// 							});
+// 							$(this).find("input[name*=comments]").each(function() {
+// 								var name = $(this).attr("name").split(".")[1],
+// 									name = "page-columnList[" + index + "]." + name;
+// 								$(this).attr("name", name)
+// 							})
+						});
+					}
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<table id="testTable" class="table table-striped table-bordered table-hover dataTables-example dataTable">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>头部</th>
+					<th>头部2</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<input type="hidden" name="columnList[0].sort" value="0"/>
+						<label>0</label>
+					</td>
+					<td><input type="text" name="columnList[0].name" class="form-control"/></td>
+					<td>中间2</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="hidden" name="columnList[1].sort" value="1"/>
+						<label>1</label>
+					</td>
+					<td><input type="text" name="columnList[1].name" class="form-control"/></td>
+					<td>中间2</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="hidden" name="columnList[2].sort" value="2"/>
+						<label>2</label>
+					</td>
+					<td><input type="text" name="columnList[2].name" class="form-control"/></td>
+					<td>中间2</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="hidden" name="columnList[3].sort" value="3"/>
+						<label>3</label>
+					</td>
+					<td><input type="text" name="columnList[3].name" class="form-control"/></td>
+					<td>中间2</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>X</td>
+					<td>尾部</td>
+					<td>尾部2</td>
+				</tr>
+			</tfoot>
+		</table>
+		<code>
+			1123
+		</code>
+	</body>
+</html>

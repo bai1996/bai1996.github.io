@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML5和jQuery轻量级音频播放器插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/audioplayer.css" />
+	<script>
+		/*
+			iOS浏览BUG修复
+			by @mathias, @cheeaun and @jdalton
+		*/
+		(function(doc){var addEvent='addEventListener',type='gesturestart',qsa='querySelectorAll',scales=[1,1],meta=qsa in doc?doc[qsa]('meta[name=viewport]'):[];function fix(){meta.content='width=device-width,minimum-scale='+scales[0]+',maximum-scale='+scales[1];doc.removeEventListener(type,fix,true);}if((meta=meta[meta.length-1])&&addEvent in doc){fix();scales=[.25,1.6];doc[addEvent](type,fix,true);}}(document));
+	</script>
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>HTML5和jQuery轻量级音频播放器插件 <span>A Light AudioPlayer with HTML5, jQuery and CSS3.</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/html5/yinpinheshipin/201505261912.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+		</header>
+		<div class="htmleaf-content bgcolor-3">
+			<div id="wrapper">
+				<audio src="audio/seeyouagain.mp3" preload="auto" controls></audio>
+				<script src="js/jquery.min.js"></script>
+				<script src="js/audioplayer.js"></script>
+				<script>$( function() { $( 'audio' ).audioPlayer(); } );</script>
+			</div>
+		</div>
+		<div class="related">
+		    <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
+		    <a href="http://www.htmleaf.com/html5/yinpinheshipin/20141031344.html">
+			  <img src="related/1.jpg" width="300" alt="适合移动设备的响应式html5音频播放器"/>
+			  <h3>适合移动设备的响应式html5音频播放器</h3>
+			</a>
+			<a href="http://www.htmleaf.com/html5/yinpinheshipin/201503151524.html">
+			  <img src="related/2.jpg" width="300" alt="基于HTML5 canvas和Web Audio的音频播放器插件"/>
+			  <h3>基于HTML5 canvas和Web Audio的音频播放器插件</h3>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

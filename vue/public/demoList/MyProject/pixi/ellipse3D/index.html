@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>椭圆图形动画</title>
+		<script src="/library/jquery/2.1.1/jquery.min.js"></script>
+		<script src="/library/pixi/3.0.11/pixi.min.js"></script>
+		<style>
+			body {
+				background: #000;
+				color: #fff;
+				text-align: center;
+			}
+			body canvas {
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%) translateY(-50%);
+				top: 50%;
+				border: 1px solid #000;
+			}
+		</style>
+		<script>
+			$(function() {
+				var renderer = PIXI.autoDetectRenderer(800, 400, {
+					transparent: true,
+					antialias: true
+				});
+				document.body.appendChild(renderer.view);
+			
+				var midPoints = {
+					x: 400,
+					y: 200
+				}
+			
+				stage = new PIXI.Container();
+			
+				requestAnimationFrame(animate);
+			
+			
+				var bg = PIXI.Sprite.fromImage('./beautiful-arizona-wallpaper-1.jpg');
+			
+				stage.addChild(bg);
+			
+				var graphics;
+				var arr = [];
+				for (var i = 0; i < 30; i++) {
+					graphics = new PIXI.Graphics();
+					graphics.blendMode = PIXI.BLEND_MODES.ADD;
+					graphics.speedfactor = 1 * Math.random();
+					graphics.scale.set(1 - graphics.speedfactor / 1.5);
+					graphics.color = Math.random() * 0xFFFFFF;
+					graphics.customX = 600 * Math.random() - 300;
+					graphics.customY = 600 * Math.random() - 300;
+					arr.push(graphics);
+					stage.addChild(arr[i]);
+				}
+			
+				var count = 0;
+				var count2 = 0;
+			
+				function animate() {
+					count += 0.1;
+					count2 += 0.05;
+					var width;
+					var height;
+					var speedfactor;
+					for (var i = 0; i < arr.length; i++) {
+						speedfactor = arr[i].speedfactor * 3
+						localCount = count * speedfactor;
+						localCount2 = count2 * speedfactor;
+						width = Math.cos(localCount) * 30;
+						height = Math.sin(localCount) * 30;
+						arr[i].clear();
+						// Set a new fill color
+						arr[i].beginFill(arr[i].color); // Blue
+						// Draw an ellipse
+						arr[i].drawEllipse(arr[i].customX, arr[i].customY, 50 + height, 50 + width); // drawEllipse(x, y, width, height)
+						arr[i].endFill();
+						arr[i].position.x = (midPoints.x + (150 * Math.cos(localCount2)));
+						arr[i].position.y = (midPoints.y + (25 * Math.sin(localCount2)));
+						console.log(arr[i].position.x);
+					}
+			
+					renderer.render(stage);
+					requestAnimationFrame(animate);
+				}
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+	
+</html>

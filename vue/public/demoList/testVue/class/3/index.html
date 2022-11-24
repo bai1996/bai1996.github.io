@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8">
+		<title>条件和循环</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			body{
+				padding-left: 1%;
+				padding-right: 1%;
+				width: 98%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<div>
+				<span class="cred1">v-if</span>:可以传入单条语句由true或false去觉得是否渲染此节点，与其类似的有<span class="cred1">v-show</span>，其特点是使用css来控制是否显示
+				（可以使用v-else）
+			</div>
+			<div>
+				<span class="cred1">v-for</span>:将list循环遍历，其格式为【(value,key,index) in list】,可以遍历list和object对象
+				<br>
+				最小写法为【item in list】
+			</div>
+		</div>
+		<iframe src="class/3/iframe.html" width="100%" style="height: calc(100vh - 5%);"></iframe>
+		以下是代码：
+		<div id="code"></div>
+		<script>
+			setTimeout(() => {
+				document.querySelector("#code").innerText = document.querySelector('iframe').contentDocument.body.innerHTML
+			},300);			
+		</script>
+	</body>
+</html>

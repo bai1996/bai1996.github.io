@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+		<style>
+			html,body{
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			.myTextArea{
+				width:calc(50% - 9px);
+				height:calc(50% - 10px);
+			}
+			.appView{
+				height:calc(50% - 30px - 1em);
+			}
+			#runBtn{
+				width: 100%;
+			}
+		</style>
+		<script>
+			/*获取到Url里面的参数*/
+			function getUrlParam(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) return unescape(r[2]); return null;
+			}
+			
+			/*获取到Url里面的参数*/
+			function getUrlParamDecode(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) return decodeURI(r[2]); return null;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="title"></div>
+		<div class="appView">
+			<div id="app">
+				
+			</div>
+		</div>
+		<!-- 自己动手做 -->
+		<textarea id="htmlText" class="myTextArea" title="此处输入Html内容">{{text}}</textarea>
+<textarea id="vueText" class="myTextArea" title="此处输入js内容">
+var app = new Vue({
+	el:"#app",
+	data:{
+		text:"hello word!"
+	}
+});
+</textarea>
+		<button type="button" id="runBtn">运行</button>
+	</body>
+	<script type="text/javascript">
+		let titleDom = document.getElementById("title");
+		let title = getUrlParamDecode("title");
+		titleDom.innerHTML = title;
+		
+		let runBtnDom = document.getElementById("runBtn");
+		runBtnDom.addEventListener("click",function(e){
+			let htmlText = document.getElementById("htmlText");
+			document.getElementById("app").innerHTML = htmlText.value;
+			//app
+			let vueText = document.getElementById("vueText");
+			eval(vueText.value);
+		});
+	</script>
+</html>

@@ -1,0 +1,896 @@
+<!DOCTYPE>
+<HTML>
+<head>
+<title>DEMO</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/pageSwitch.min.css" />
+
+<style>
+body{
+	/*padding-bottom: 60px;*/
+}
+.row{
+    margin-right: 0;
+    margin-left: 0;
+}
+
+
+/*标题文字-旧*/
+.center {	
+    width: 1200px;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+	border-bottom:2px dashed #000;
+}
+.special_title {
+	float: left;
+    width: 20%;
+    line-height: 40px;
+    font-size: 40px;
+    text-align: center;
+    color: #000000;
+    background-image: -webkit-linear-gradient(to left, #c81e0a, #000000);
+    background-image: linear-gradient(to left,#c81e0a,#000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto;
+}
+.special_title_small {
+    width: 100%;
+    line-height: 30px;
+    font-size: 24px;
+    color: #000000;
+    text-align: right;
+}
+/*标题文字END*/
+
+</style>
+
+<head>
+
+<body class="index">
+<!--
+<div class="p30"></div>
+-->
+<style>
+/*导航条*/
+/*最大盒子*/
+.qn_navbar{}
+/*内容盒子*/
+.qn_navbar .qn_container{}
+/*头部*/
+.qn_navbar .qn_container .qn_header{}
+/**/
+.qn_navbar .qn_container .qn_brand{}
+.qn_navbar .qn_container .qn_collapse{}
+.qn_navbar .qn_container .qn_collapse .qn_nav{}
+/*选中状态*/
+.qn_navbar .qn_active{}
+/*导航条*/
+
+</style>
+<!--固定导航条-Bootstrap-->
+<nav class="navbar navbar-default navbar-inverse qn_navbar">
+  <div class="container-fluid qn_container">
+    <div class="navbar-header qn_header">
+      <a class="navbar-brand qn_brand" href="#">DEMO</a>
+      <a class="navbar-brand qn_brand" href="#">TEST</a>
+    </div>
+    <div class="collapse navbar-collapse  qn_collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav qn_nav">
+        <li class="active qn_active"><a href="#">链接 <span class="sr-only">(current)</span></a></li>
+        <li><a href="show.html">详情</a></li>
+      </ul>
+     <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">链接</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">按下<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">4</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<!-- 固定顶部导航-Bootstrap-->
+<!--
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+<!--      <div class="container-fluid">
+        <div class="navbar-header">
+           <a class="navbar-brand" href="#">DEMO</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#qn_list_page_switch_center">手动滚动列表</a></li>
+            <li><a href="#">连接</a></li>
+            <li><a href="#">连接</a></li>
+            <li><a href="#">连接</a></li>
+            <li><a href="#">连接</a></li>
+            <li><a href="#">连接</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+<!--      </div>
+    </nav>
+
+-->
+
+  <!--固定在底部-Bootstrap-->
+<!--
+  <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+<!--      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-7" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-7">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+<!--      </div>
+    </nav>
+-->
+
+
+
+		<!--滚动图-->
+		<div id="qn_page_switch">
+			<div class="sections">
+				<div class="section" id="section0" style="background-image: url('img/banner1.jpg')"></div>
+				<div class="section" id="section1" style="background-image: url('img/banner1.jpg')"></div>
+				<div class="section" id="section2" style="background-image: url('img/banner1.jpg')"></div>
+				<div class="section" id="section3" style="background-image: url('img/banner1.jpg')"></div>
+			</div>
+		</div>
+
+		<script src="js/pageSwitch.min.js"></script>
+		<script>
+			$("#qn_page_switch").PageSwitch({
+				direction: 'horizontal',
+				easing: 'ease-in',
+				duration: 1000,
+				autoPlay: true,
+				loop: 'false'
+			});
+		</script>
+		<!--滚动图-->
+		<!--手动滚动列表--><div id="qn_list_page_switch_center"></div>
+		<div class="qn_list_page_switch_center">
+			<div class="center p60">
+				<div class="special_title">手动滚动列表</div>
+				<div class="special_title_small">Scientific research trends</div>
+			</div>
+			<section id="qn_list_page_switch_gallery">
+				<div class="qn_list_page_switch_container1">
+					<ul id="myRoundabout">
+						<li>
+							<img src="img/card_img1.jpg" class="qn_list_page_switch_card_img" />
+							<div class="qn_list_page_switch_card_p">
+								<span class="qn_list_page_switch_card_p1_span">
+									<img src="img/download.png" />
+								</span>
+								<div class="qn_list_page_switch_card_p1">我们的应用领域</div>
+								<div class="qn_list_page_switch_card_p2">iPEK为每个应用领域提供合适的产品和解决方案，并为检验市场提供各种要求。新移民在检验市场开展业务将在iPEK START区域找到合适的套件; iPEK MOBILE产品线包括用于管道检测的完整的移动式履带式系统，而iPEK TRUCK提供不同版本的ROVION系统，用于车辆安装。即使在具有潜在爆炸性环境的危险环境中使用，您也可以配备iPEK ROVION EX和AGILIOS EX系统。
+								</div>
+							</div>
+						</li>
+						<li>
+							<img src="img/card_img1.jpg" class="qn_list_page_switch_card_img" />
+							<div class="qn_list_page_switch_card_p">
+								<span class="qn_list_page_switch_card_p1_span">
+								<img src="img/download.png" />
+							</span>
+								<div class="qn_list_page_switch_card_p1">我们的应用领域</div>
+								<div class="qn_list_page_switch_card_p2">iPEK为每个应用领域提供合适的产品和解决方案，并为检验市场提供各种要求。新移民在检验市场开展业务将在iPEK START区域找到合适的套件; iPEK MOBILE产品线包括用于管道检测的完整的移动式履带式系统，而iPEK TRUCK提供不同版本的ROVION系统，用于车辆安装。即使在具有潜在爆炸性环境的危险环境中使用，您也可以配备iPEK ROVION EX和AGILIOS EX系统。
+								</div>
+							</div>
+						</li>
+						<li>
+							<img src="img/card_img1.jpg" class="qn_list_page_switch_card_img" />
+							<div class="qn_list_page_switch_card_p">
+								<span class="qn_list_page_switch_card_p1_span">
+								<img src="img/download.png" />
+							</span>
+								<div class="qn_list_page_switch_card_p1">我们的应用领域</div>
+								<div class="qn_list_page_switch_card_p2">iPEK为每个应用领域提供合适的产品和解决方案，并为检验市场提供各种要求。新移民在检验市场开展业务将在iPEK START区域找到合适的套件; iPEK MOBILE产品线包括用于管道检测的完整的移动式履带式系统，而iPEK TRUCK提供不同版本的ROVION系统，用于车辆安装。即使在具有潜在爆炸性环境的危险环境中使用，您也可以配备iPEK ROVION EX和AGILIOS EX系统。
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<script type="text/javascript" src="js/roundabout.js"></script>
+			<script type="text/javascript" src="js/roundabout_shapes.js"></script>
+			<script type="text/javascript" src="js/gallery_init.js"></script>
+			<!--[if lt IE 7]>
+			<link rel="stylesheet" href="css/ie/ie6.css" type="text/css" media="all">
+			<![endif]-->
+			<!--[if lt IE 9]>
+			<script type="text/javascript" src="js/html5.js"></script>
+			<script type="text/javascript" src="js/ie9.js"></script>
+			<![endif]-->
+		</div>
+		<!--手动滚动列表-->
+
+
+
+
+
+		<!--横向列表-->
+		<div class="qn_list_transverse_bg">
+			<div class="center p60">
+				<div class="special_title">横向列表</div>
+				<div class="special_title_small">Scientific research trends</div>
+			</div>
+			<div class="container">
+				<div class="row p60">
+					<div class="col-md-2 column">
+						<div class="qn_list_transverse_div qn_list_transverse_position">
+							<img src="img/special_div.png" class="qn_list_transverse_div"/>
+							<div class="qn_list_transverse_div_p">
+								模<br/>块<br/>一
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 column">
+						<div class="qn_list_transverse_div qn_list_transverse_position">
+							<img src="img/special_div.png" class="qn_list_transverse_div"/>
+							<div class="qn_list_transverse_div_p">
+								模<br/>块<br/>二
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 column">
+						<div class="qn_list_transverse_div qn_list_transverse_position">
+							<img src="img/special_div.png" class="qn_list_transverse_div"/>
+							<div class="qn_list_transverse_div_p">
+								模<br/>块<br/>三
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 column">
+						<div class="qn_list_transverse_div qn_list_transverse_position">
+							<img src="img/special_div.png" class="qn_list_transverse_div"/>
+							<div class="qn_list_transverse_div_p">
+								模<br/>块<br/>四
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 column">
+						<div class="qn_list_transverse_div qn_list_transverse_position">
+							<img src="img/special_div.png" class="qn_list_transverse_div"/>
+							<div class="qn_list_transverse_div_p">
+								模<br/>块<br/>五
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 column">
+						<div class="qn_list_transverse_div qn_list_transverse_position">
+							<img src="img/special_div.png" class="qn_list_transverse_div"/>
+							<div class="qn_list_transverse_div_p">
+								模<br/>块<br/>六
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--横向列表-->
+		
+		
+		<!--数字列表方块-->
+		<div class="qn_list_number_block_center">
+			<div class="center p60">
+				<div class="special_title">数字列表方块</div>
+				<div class="special_title_small">Scientific research trends</div>
+			</div>
+			<div class="qn_list_number_block_bg container">
+				<div class="row">
+					<div class="col-md-3 column">
+						<div class="qn_list_number_block_div">
+							<img src="img/science_nub.png" />
+							<div class="qn_list_number_block_nub">1</div>
+							<div class="qn_list_number_block_p">关于完善科技发展计划项目的意见2017年</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<div class="qn_list_number_block_div">
+							<img src="img/science_nub.png" />
+							<div class="qn_list_number_block_nub">2</div>
+							<div class="qn_list_number_block_p">长春市科技发展报告撰写模板</div>
+						</div>
+						
+					</div>
+					<div class="col-md-3 column">
+						<div class="qn_list_number_block_div">
+							<img src="img/science_nub.png" />
+							<div class="qn_list_number_block_nub">3</div>
+							<div class="qn_list_number_block_p">长春市科技发展报告编写手册</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<div class="qn_list_number_block_div">
+							<img src="img/science_nub.png" />
+							<div class="qn_list_number_block_nub">4</div>
+							<div class="qn_list_number_block_p">长春市科技项目管理办法实施的通知</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<div class="qn_list_number_block_div">
+							<img src="img/science_nub.png" />
+							<div class="qn_list_number_block_nub">5</div>
+							<div class="qn_list_number_block_p">中华职业教育社项目经费申报书（2017年）</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<div class="qn_list_number_block_div">
+							<img src="img/science_nub.png" />
+							<div class="qn_list_number_block_nub">6</div>
+							<div class="qn_list_number_block_p">中华职业教育社2018年度科研项目申报指南</div>
+						</div>
+						
+					</div>
+					<div class="col-md-3 column">
+						<div class="qn_list_number_block_div">
+							<img src="img/science_nub.png" />
+							<div class="qn_list_number_block_nub">7</div>
+							<div class="qn_list_number_block_p">中华职业教育社2017年度科研项目申报指南</div>
+						</div>
+					</div>
+					<div class="col-md-3 column">
+						<div class="qn_list_number_block_div">
+							<img src="img/science_nub.png" />
+							<div class="qn_list_number_block_nub">8</div>
+							<div class="qn_list_number_block_p">吉林省职业教育研究社科研项目申报模板</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--数字列表方块-->
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+</style>		
+		<!--列表方块状-->
+		<div class="qn_list_block_box_max">
+			<div class="title_box">
+				<div class="title">列表方块状</div>
+				<div class="title_small">更多</div>
+			</div>
+			<div class="row body">
+				<div class="col-md-4 column">
+					<div class="minbox">
+						<img src="img/achievements_img1.jpg"  class="img"/>
+ 					</div>
+					<div class="title">开创先河</div>
+					<div class="abstract">使无业者有业  使有业者乐业</div>
+				</div>
+				<div class="col-md-4 column">
+					<div class="minbox">
+						<img src="img/achievements_img2.jpg"  class="img"/>
+					</div>
+					<div class="title">教育实践</div>
+					<div class="abstract">尽实验之功能  勉为社会打开新路</div>
+				</div>
+				<div class="col-md-4 column">
+					<div class="minbox">
+						<img src="img/achievements_img3.jpg" class="img" />
+					</div>
+					<div class="title">风雨同舟</div>
+					<div class="abstract">一寸精神都为国  一寸光阴全为民</div>
+				</div>
+				<div class="col-md-4 column">
+					<div class="minbox">
+						<img src="img/achievements_img4.jpg" class="img" />
+					</div>
+					<div class="title">新的方向</div>
+					<div class="abstract">办职业教育，须下决心为大多数平民谋幸福</div>
+				</div>
+				<div class="col-md-4 column">
+					<div class="minbox">
+						<img src="img/achievements_img5.jpg" class="img" />
+					</div>
+					<div class="title">重放光彩</div>
+					<div class="abstract">尽实验之功能  勉为社会打开新路</div>
+				</div>
+				<div class="col-md-4 column">
+					<div class="minbox">
+						<img src="img/achievements_img6.jpg" class="img" />
+					</div>
+					<div class="title">共襄伟业</div>
+					<div class="abstract">一寸精神都为国  一寸光阴全为民</div>
+				</div>
+			</div>
+		</div>
+		<!--列表方块状-->		
+<style>
+
+</style>
+		<!--包围式列表-->
+		<div class="qn_list_surround_box_max">
+			<div class="title_box">
+				<div class="title">包围式列表</div>
+				<div class="title_small">更多</div>
+			</div>
+			<div class="body">
+				<div class="row list">
+					<div class="col-md-6 column_left">
+						<div class="img_div">
+							<img src="img/news_img_img.png" class="img" />
+						</div>
+					</div>
+					<div class="col-md-6 column_right">
+						<a class="href">
+							<div class="date">
+								<div class="date_day">09</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">李克强对第十届全国职业院校技能大赛作出重要批示</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">12</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">“彩虹人生”全国分享团首场示范性分享活动</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">12</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">“彩虹人生”全国分享团首场示范性分享活动</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">12</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">“彩虹人生”全国分享团首场示范性分享活动</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">25</div>
+								<div class="date_year_month">2017/04</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">六部门联合下发通知 办好职业教育活动周</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-12 column_bottom">
+						<a class="href">
+							<div class="date">
+								<div class="date_day">09</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">李克强对第十届全国职业院校技能大赛作出重要批示</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">09</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">李克强对第十届全国职业院校技能大赛作出重要批示</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">09</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">李克强对第十届全国职业院校技能大赛作出重要批示</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--包围式列表-->
+<style>
+
+</style>		
+		<!--简洁列表-->
+		<div class="qn_list_concise_box_max">
+			<div class="title_box">
+				<div class="title">简洁列表</div>
+				<div class="title_small">更多</div>
+			</div>
+			<div class="body">
+				<div class="list">
+						<a class="href">
+							<div class="date">
+								<div class="date_day">09</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">李克强对第十届全国职业院校技能大赛作出重要批示</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">12</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">“彩虹人生”全国分享团首场示范性分享活动</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">25</div>
+								<div class="date_year_month">2017/04</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">六部门联合下发通知 办好职业教育活动周</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="date">
+								<div class="date_day">09</div>
+								<div class="date_year_month">2017/05</div>
+							</div>
+							<div class="pdiv">
+								<div class="title">李克强对第十届全国职业院校技能大赛作出重要批示</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+				</div>
+			</div>
+		</div>
+		<!--简洁列表-->
+
+<style>
+
+</style>
+		<!--纯文字列表-->
+		<div class="qn_list_font_box_max">
+			<div class="title_box">
+				<div class="title">纯文字列表</div>
+				<div class="title_small">更多</div>
+			</div>
+			<div class="body">
+				<div class="list">
+						<a class="href">
+								<div class="p1" title="李克强对第十届全国职业院校技能大赛作出重要批示“>
+									李克强对第十届全国职业院校技能大赛作出重要批示
+								</div>
+						</a>                        
+						<a class="href">                
+								<div class="p1" title="“彩虹人生”全国分享团首场示范性分享活动">
+									“彩虹人生”全国分享团首场示范性分享活动
+								</div>
+						</a>                        
+						<a class="href">                
+								<div class="p1" title="六部门联合下发通知 办好职业教育活动周">
+									六部门联合下发通知 办好职业教育活动周
+								</div>
+						</a>                        
+						<a class="href">                
+								<div class="p1" title="李克强对第十届全国职业院校技能大赛作出重要批示">
+									李克强对第十届全国职业院校技能大赛作出重要批示
+								</div>
+						</a>
+						<a class="href">                
+								<div class="p1" title="李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示">
+									李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示李克强对第十届全国职业院校技能大赛作出重要批示
+								</div>
+						</a>
+				</div>
+			</div>
+		</div>
+		<!--纯文字列表-->
+
+<style>
+/*单列图文列表*/
+/*最大盒子*/
+.qn_list_concise_img_box_max {
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+}
+/*标题*/
+.qn_list_concise_img_box_max .title_box{
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+	border-bottom:2px dashed #000;
+	padding: 20px 0;
+}
+/*大标题*/
+.qn_list_concise_img_box_max .title_box .title{
+	float: left;
+    line-height: 40px;
+    font-size: 40px;
+    color: #000000;
+    background-image: -webkit-linear-gradient(to left, #c81e0a, #000000);
+    background-image: linear-gradient(to left,#c81e0a,#000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 auto;
+}
+/*小标题*/
+.qn_list_concise_img_box_max .title_box .title_small {
+    line-height: 30px;
+    font-size: 24px;
+    color: #000000;
+    float: right;
+}
+/*包围列表*/
+.qn_list_concise_img_box_max .body{
+	
+}
+/*列表*/
+.qn_list_concise_img_box_max .body .list{
+	
+}
+/*内容区块*/
+.qn_list_concise_img_box_max .body .list .href{
+	display: block;
+	width: 100%;
+	height: 130px;
+	border-bottom: 1px #d7d7d7 dashed;
+	padding: 15px 0px;
+	box-sizing: border-box;
+}
+/*内容区块鼠标进入状态*/
+.qn_list_concise_img_box_max .body .list .href:hover{
+	cursor:pointer;
+}
+/*图片盒子*/
+.qn_list_concise_img_box_max .body .list .href .img_div{
+	width: 85px;
+	height: 85px;
+	float: left;
+	background: #f2f2f2;
+	padding: 15px 0px;
+	box-sizing: border-box;
+}
+/*图片*/
+.qn_list_concise_img_box_max .body .list .href .img_div .img{
+	width: 100%;
+	height: 100%;
+}
+/*文字包围*/
+.qn_list_concise_img_box_max .body .list .href .pdiv{
+	width: 80%;
+	height: 85px;
+	margin-left: 15px;
+	float: left;
+}
+/*文字包围标题*/
+.qn_list_concise_img_box_max .body .list .href .pdiv .title{
+	width: 100%;
+	height: 35px;
+	color: #686868;
+	font-size: 14px;
+	overflow: hidden;
+	line-height: 35px;
+}
+/*文字包围简介*/
+.qn_list_concise_img_box_max .body .list .href .pdiv .abstract{
+	width: 100%;
+	height: 50px;
+	color: #9a9999;
+	font-size: 12px;
+	overflow: hidden;
+	line-height: 25px;
+}
+	/*单列图文列表END*/
+</style>		
+		<!--单列图文列表-->
+		<div class="qn_list_concise_img_box_max">
+			<div class="title_box">
+				<div class="title">单列图文列表</div>
+				<div class="title_small">更多</div>
+			</div>
+			<div class="body">
+				<div class="list">
+						<a class="href">
+							<div class="img_div">
+								<img src="img/news_img_img.png" class="img" />
+							</div>
+							<div class="pdiv">
+								<div class="title">李克强对第十届全国职业院校技能大赛作出重要批示</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="img_div">
+								<img src="img/news_img_img.png" class="img" />
+							</div>
+							<div class="pdiv">
+								<div class="title">“彩虹人生”全国分享团首场示范性分享活动</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="img_div">
+								<img src="img/news_img_img.png" class="img" />
+							</div>
+							<div class="pdiv">
+								<div class="title">六部门联合下发通知 办好职业教育活动周</div>
+								<div class="abstract">
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+						<a class="href">
+							<div class="img_div">
+								<img src="img/news_img_img.png" class="img" />
+							</div>
+							<div class="pdiv">
+								<div class="title">李克强对第十届全国职业院校技能大赛作出重要批示</div>
+								<div class="abstract" >
+									1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。1日，全省中等职业学校示范性现代职业院校建设现场推进会在长乐召开。省教育厅副厅长陈国龙出席并讲话。
+								</div>
+							</div>
+						</a>
+				</div>
+			</div>
+		</div>
+		<!--单列图文列表-->
+		
+		
+<style>
+.qn_footer{	
+}
+.qn_footer .list_default{
+	color: #686868;
+}
+.qn_footer .list_default:hover{
+	cursor:pointer;
+}
+</style>
+<!--固定导航条-Bootstrap-->
+<nav class="navbar navbar-default navbar-inverse qn_footer">
+  <div class="container">
+	<div class="col-lg-12 col-lg-offset-2 col-sm-12 col-sm-offset-2 col-xs-12 col-xs-offset-2">
+		<a class="list_default">
+			公司简介|
+		</a>
+		<a class="list_default">
+			招贤纳士|
+		</a>
+		<a class="list_default">
+			广告服务|
+		</a>
+		<a class="list_default">
+			联系方式|
+		</a>
+		<a class="list_default">
+			版权声明|
+		</a>
+		<a class="list_default">
+			法律顾问|
+		</a>
+		<a class="list_default">
+			问题报告|
+		</a>
+		<a class="list_default">
+			合作伙伴|
+		</a>
+		<a class="list_default">
+			论坛反馈
+		</a>
+	</div>
+	<div class="col-lg-12 col-lg-offset-2 col-sm-12 col-sm-offset-2 col-xs-12 col-xs-offset-2">
+		<a class="list_default">
+			© 2003-2017 ITeye.com. All rights reserved. [ 京ICP证110151号 京公网安备110105010620 ] 
+		</a>
+	</div>
+	
+  </div>
+  
+</nav>
+		
+		
+</body>
+
+</HTML>

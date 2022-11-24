@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<div :title="msg" @click="dianji(e,'123')">xxxxx</div>
+			<div v-show="isShow">
+				看不见我
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			data:{
+				msg:"helloword",
+				isShow:true
+			},
+			computed:{
+				
+			},
+			methods:{
+				dianji:function(e,num){
+					alert(num);
+					console.log(e)
+				}
+			},
+			watch: {
+				
+			}
+		});
+	</script>
+</html>

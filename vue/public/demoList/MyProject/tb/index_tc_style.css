@@ -1,0 +1,12 @@
+.sys_item_spec *{ margin:0; padding:0;-webkit-text-size-adjust:none;}
+
+.sys_item_spec a{ color:#555; text-decoration:none;}
+
+.sys_item_spec a:hover{ color:#c00; text-decoration:underline;}
+
+
+.sys_item_spec li{ list-style:none;}
+
+.sys_item_spec .clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.sys_item_spec * html .clearfix             { zoom: 1; } /* IE6 */
+.sys_item_spec *:first-child+html .clearfix { zoom: 1; } /* IE7 */   

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8">
+		<title>模板语法</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			body{
+				padding-left: 1%;
+				padding-right: 1%;
+				width: 98%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<!-- 绑定元素特性(<span class="cred">下面的是图片</span>) -->
+		</div>
+		<iframe src="class/7/iframe.html" width="100%" style="height: calc(100vh - 5%);"></iframe>
+		以下是代码：
+		<div id="code"></div>
+		<script>
+			setTimeout(() => {
+				document.querySelector("#code").innerText = document.querySelector('iframe').contentDocument.body.innerHTML
+			},300);			
+		</script>
+	</body>
+</html>

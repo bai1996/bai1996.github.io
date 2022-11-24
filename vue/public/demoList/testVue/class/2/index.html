@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8">
+		<title>绑定元素特性和事件</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			body{
+				padding-left: 1%;
+				padding-right: 1%;
+				width: 98%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<br>
+			<em class="cblue1">:title</em>是<em class="cblue1">v-bind:title</em>的简写，功能是一样的
+			<br>
+			vue里的data可以使用方法初始化,也可以改变
+			使用vue暴露的方法可以更改其值【<em class="cred1">app.$data.message = 'xxxx';</em>】
+			<br>
+			或是使用【<em class="cred1">Vue.set(data,'messafe','XXXXXX');</em>】,第一个参数为vue对象的变量名(栗子中的app)，第二个是需要改变的属性名，第三是改变的值
+			<br>
+			<em class="cgreen1">@click</em>是v-on:click的简写，其意思与原生的onclick基本一样，但是vue的更加多样，可以带事件修饰符  .stop,.prevent等
+			<br>
+			<br>
+			
+		</div>
+		<iframe src="class/2/iframe.html" width="100%" style="height: calc(100vh - 20%);"></iframe>
+		以下是代码：
+		<div id="code"></div>
+		<script>
+			setTimeout(() => {
+				document.querySelector("#code").innerText = document.querySelector('iframe').contentDocument.body.innerHTML
+			},300);			
+		</script>
+	</body>
+</html>

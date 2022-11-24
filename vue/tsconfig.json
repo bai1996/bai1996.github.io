@@ -10,5 +10,12 @@
     {
       "path": "./tsconfig.vitest.json"
     }
+  ],
+  "compilerOptions": {
+    "outDir":"./",
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }

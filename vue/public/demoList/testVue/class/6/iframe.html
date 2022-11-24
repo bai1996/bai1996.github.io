@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<div>当示例创建后执行的内容：</div>
+			<div id="text"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			data:{
+				a:1
+			},
+			//当示例创建后执行
+			created:function(){
+				// `this` 指向 当前vue 实例
+				document.getElementById("text").innerHTML = "a is:"+this.a;
+				// console.log("a is:"+this.a);
+			}
+		});
+	</script>
+</html>

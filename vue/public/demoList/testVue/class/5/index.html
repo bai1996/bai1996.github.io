@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8">
+		<title>组件化应用构建</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			body{
+				padding-left: 1%;
+				padding-right: 1%;
+				width: 98%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			我们定义了<b class="cred1">todo-item</b>组件:
+			<br>
+			&lt;li&gt;这句话来自于‘todo-item组件’&lt;/li&gt;
+			<br>
+			那么我们直接将【&lt;todo-item&gt;&lt;/todo-item&gt;】写在html中（#app下），就会输出<b class="cred1">template</b>定义的内容
+			<br>
+			这只是个简单的例子，于是我们定义了更加实用的【<b class="cblue1">todo-item-plus</b>】
+			<br>
+			与之前的例子不同，这次我们多写了个<b class="cgreen1">props</b>用来代表着<b class="cblue1">template</b>使用的变量名
+			<br>
+			<b class="cblue1">template</b>:"&lt;li&gt;{{todo.text}}&lt;/li&gt;"
+			<br>
+			我们定义了obj和list变量
+			<pre>
+			obj:{id:3,text:"瓜子"},
+			list:[
+				{id:0,text:'蔬菜'},
+				{id:1,text:'奶酪'},
+				{id:2,text:'随便其它什么人吃的东西'}
+			]
+			</pre>
+			第一次我们使用了最简单的方式
+			<br>
+			【&lt;todo-item-plus :todo="obj"&gt;&lt;/todo-item-plus&gt;】
+			<br>
+			可以看出这次是按照obj的内容渲染的
+			<br>
+			我们还可以配合<b class="cred1">for</b>循环来使用，于是我们又举了个栗子
+			<br>
+			【&lt;todo-item-plus v-for="item in list" :todo="item" :key="item.id"&gt;&lt;/todo-item-plus&gt;】
+			首先我们用<b class="cred1">v-for</b>循环list变量，每次循环的对象为<b class="cgreen1">item</b>，然后我们将其扔进组件中，组件会进行渲染
+			
+			
+		</div>
+		<iframe src="class/5/iframe.html" width="100%" style="height: calc(100vh - 5%);"></iframe>
+		以下是代码：
+		<div id="code"></div>
+		<script>
+			setTimeout(() => {
+				document.querySelector("#code").innerText = document.querySelector('iframe').contentDocument.body.innerHTML
+			},300);			
+		</script>
+	</body>
+</html>

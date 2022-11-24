@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8">
+		<title>生命周期</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			body{
+				padding-left: 1%;
+				padding-right: 1%;
+				width: 98%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<!-- 绑定元素特性(<span class="cred">下面的是图片</span>) -->
+			<br>
+			也有一些其它的钩子，在实例生命周期的不同阶段被调用，如 mounted、updated 和 destroyed。生命周期钩子的 this 上下文指向调用它的 Vue 实例。
+			<br>
+			Vue的生命周期(<b class="cred1">点击放大</b>)
+			<br>
+			<img id="text" src="class/6/img/36yepjdq.bmp" alt="Vue 实例生命周期" style="width:5%;" onclick="if(this.style.width == '100%'){this.style.width = '5%';}else{this.style.width = '100%';}">
+		</div>
+		<iframe src="class/6/iframe.html" width="100%" style="height: calc(100vh - 5%);"></iframe>
+		以下是代码：
+		<div id="code"></div>
+		<script>
+			setTimeout(() => {
+				document.querySelector("#code").innerText = document.querySelector('iframe').contentDocument.body.innerHTML
+			},300);			
+		</script>
+	</body>
+</html>

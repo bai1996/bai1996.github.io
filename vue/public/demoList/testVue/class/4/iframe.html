@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="../../">
+		<meta charset="utf-8" />
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="js/vue/2.6.6/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script>		 -->
+		<!-- <script src="js/vue/2.6.6/vue.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<title>vue示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="msg"/>：去除前后空格‘<b class="cred1">v-model</b>’
+			<br>
+			<input type="text" v-model.lazy="msg"/>： 在“change”时而非“input”时更新‘<b class="cred1">v-model.lazy</b>’
+			<br>
+			<input type="number" v-model.number="msg"/>：输入值转为数字‘<b class="cred1">v-model.number</b>’
+			<br>
+			<input type="text" v-model.trim="msg"/>：去除首尾空格‘<b class="cred1">v-model.trim</b>’
+			<br>
+			
+			<textarea v-model="msg" placeholder="添加多行文本"></textarea>
+			<br>
+			{{msg}}
+			
+			<br>
+			<input type="checkbox" id="checkbox" v-model="checked">
+			<label for="checkbox">{{ checked }}</label>
+			<br>
+			<div id='example-3'>
+			  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+			  <label for="jack">Jack</label>
+			  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+			  <label for="john">John</label>
+			  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+			  <label for="mike">Mike</label>
+			  <br>
+			  <span>选中的值是: {{ checkedNames }}</span>
+			</div>
+					
+					
+			<br>
+			
+			<div id="example-4">
+			  <input type="radio" id="one" value="1" v-model="picked">
+			  <label for="one">1</label>
+			  <br>
+			  <input type="radio" id="two" value="2" v-model="picked">
+			  <label for="two">2</label>
+			  <br>
+			  <span>选中了哪个: {{ picked }}</span>
+			</div>
+			<br>
+			<div id="example-5">
+			  <select v-model="selected">
+			    <option disabled value="">请选择</option>
+			    <option>A</option>
+			    <option>B</option>
+			    <option>C</option>
+			  </select>
+			  <span>Selected: {{ selected }}</span>
+			</div>
+			<br>
+			<div id="example-6">
+			  <select v-model="selecteds" multiple style="width: 50px;" >
+			    <option v-bind:value="{number:'a',label:'A'}">A</option>
+			    <option v-bind:value="{number:'b',label:'B'}">B</option>
+			    <option v-bind:value="{number:'c',label:'C'}">C</option>
+			  </select>
+			  <br>
+			  <span>Selected: {{ selecteds }}</span>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			data:{
+				msg:"hello Vue！",
+				checked:false,
+				checkedNames:["John"],
+				picked:"",
+				selected:"",
+				selecteds:["b"]
+			},
+			methods:{
+				
+			}
+		});
+	</script>
+</html>
